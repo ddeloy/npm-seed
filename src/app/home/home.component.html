@@ -1,0 +1,66 @@
+<md-card>
+  <md-card-title> <h3>I am the Home Component</h3></md-card-title>
+  <md-card-subtitle>I am imported at root module level</md-card-subtitle>
+  <md-card-content>
+    <p>I need to be imported at root level to have access to md-modules. If we want to take advantage of Lazy Loading,
+      we will need to break out components and only import md-modules that are being used. This will also reduce overall footprint.
+    Note: Presently our Library Module imports 'all' md-modules. Note*: Material design is going to be deprecating the wild card 'MaterialModule' - which
+    automatically pulls in everything material. So, in any event, we will need to refactor at some point.</p>
+    <p><strong>Input: Floating placeholder spacing fixed</strong></p>
+
+    <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+      <md-input-container class="ml-xs mr-xs" style="width: 100%;">
+        <input mdInput placeholder="Default With Floating Label" type="text">
+      </md-input-container>
+      <md-input-container class="compact ml-xs mr-xs" style="width: 100%;">
+        <input mdInput placeholder="Compact With Floating Label" type="text">
+      </md-input-container>
+    </div>
+    <p>I have put some basic routing in place at the 'root' level. I'll be adding Wijmo as a separate 'Feature Module' and it will be Lazy loaded on demand.</p>
+    <div>
+    <strong>app.routes.ts</strong><br/>
+    import  &#123;Routes,RouterModule} from "@angular/router";<br/>
+    import  &#123;HomeComponent} from "./home/home.component";<br/>
+    import  &#123;BasicComponent} from "./basic/basic.component";<br/><br/>
+
+    const APP_ROUTES = [<br/>
+    &#123;path:'', component:HomeComponent}, // This needs to be imported and declared in app.module.ts in order to have access to md-modules<br/>
+    &#123;path: 'basic', component:BasicComponent} // // This needs to be imported and declared in app.module.ts in order to have access to md-modules<br/>
+    &#123;path: 'wijmo', loadChildren:'app/wijmo/wijmo.module#WijmoModule'} // This is a feature module - notice no import here and no import in app.module.ts.<br/>
+     It has a separate directory and routing file - only imports dependencies it needs. And is loaded on demand. The wijmo routing ts file is imported by the WijmoModule.<br/>
+     This is not implemented yet - but once in place I will document the structure.<br/>
+    ]<br/><br/>
+
+    export const routing = RouterModule.forRoot(APP_ROUTES, &#123;useHash:true}); // routing const is imported in app.module.ts<br/>
+
+      <br/>
+      <strong>app.component.ts</strong><br/>
+      Dynamic Routing<br/>
+      navs = [<br/>
+      &#123;url: "", content: "Home"},<br/>
+      &#123;url: "basic", content: "Basic"}<br/>
+      ];
+    </div>
+    <br/>
+    <div>
+       <strong>app.component.html</strong><br/>
+       To get layout like sample site and like I have in this npm demo - just drop in the markup below (nav routing optional).<br/><br/>
+       &lt;md-toolbar class="main-header" color="primary"> &lt;/md-toolbar><br/>
+       &lt;md-sidenav-container class="app-inner"><br/>
+          &lt;md-sidenav #sidemenu class="sidebar-panel sidebar-menu-panel"  mode="side" opened><br/>
+          <strong>You can do your own thing with the nav </strong><br/>
+            &lt;md-nav-list class="navigation"><br/>
+                *ngFor="let nav of navs"<br/>
+                [routerLink]="nav.url"<br/>
+                routerLinkActive="active"<br/>
+               [routerLinkActiveOptions]="&#123;exact:true}"><br/>
+      &lt;a>&#123;<br/>
+      &#123;nav.content}}&lt;/a><br/>
+      &lt;/md-list-item><br/>
+            &lt;/md-nav-list><br/>
+          &lt;/md-sidenav><br/>
+          &lt;router-outlet>&lt;/router-outlet><br/>
+        &lt;/md-sidenav-container><br/>
+        </div>
+  </md-card-content>
+</md-card>
