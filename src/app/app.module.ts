@@ -7,12 +7,16 @@ import {FormsModule} from "@angular/forms";
 import  { routing }  from './app.routes';
 import {HomeComponent } from "./home/home.component";
 import { BasicComponent } from './basic/basic.component';
+import { SecondaryComponent } from './secondary/secondary.component';
+import { OtherComponent } from './other/other.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    BasicComponent
+    BasicComponent,
+    SecondaryComponent,
+    OtherComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,70 @@
+<md-card>
+  <md-card-content>
+    <md-card-title>Simple Menu</md-card-title>
+    <div class="btn-group mr-1">
+      <button [mdMenuTriggerFor]="appMenu" md-raised-button color="primary"> Simple Menu
+        <md-icon>keyboard_arrow_down</md-icon>
+      </button>
+      <md-menu #appMenu [overlapTrigger]="false">
+        <li md-menu-item>First menu item</li>
+        <li md-menu-item>Second menu item</li>
+        <li md-menu-item>Third menu item</li>
+        <li class="divider"></li>
+        <li md-menu-item>Fourth menu item</li>
+      </md-menu>
+    </div>
+  </md-card-content>
+</md-card>
+<md-card>
+  <md-card-title>Tooltips</md-card-title>
+  <md-card-subtitle>Tooltip allows the user to specify text to be displayed when the mouse hovers over an element.</md-card-subtitle>
+  <md-card-content> <span mdTooltip="I am a tooltip!">Mouseover me for default tooltip</span>
+    <p>Need to add TypeScript for example to work properly</p>
+    <br/>
+  </md-card-content>
+</md-card>
+<md-card>
+  <md-card-title>Toolbar</md-card-title>
+  <md-card-subtitle>MdToolbar is a vertical aligned bar, which can hold the application title or actions.</md-card-subtitle>
+  <md-card-content>
+    <p>The default color toolbar:</p>
+    <md-toolbar>
+      <button md-button class="button-collapse" md-icon-button >
+        <md-icon>menu</md-icon>
+      </button>
+      <span>Logo</span> <span fxFlex></span>
+      <button md-button href="#" md-icon-button color="primary">
+        <md-icon>apps</md-icon>
+      </button>
+      <button md-button href="#" class="btn-user" md-icon-button> <span>KJ</span> </button>
+      <button md-button href="#" class="btn-notification" md-icon-button color="primary">
+        <md-icon>notifications_none</md-icon>
+        <span class="badge">2</span> </button>
+    </md-toolbar>
+    <p>The accent color toolbar:</p>
+    <md-toolbar color="accent">
+      <button md-button href="#" md-icon-button>
+        <md-icon>menu</md-icon>
+      </button>
+      <span>Accent Toolbar</span> <span fxFlex></span>
+      <button md-button href="#" md-icon-button>
+        <md-icon>search</md-icon>
+      </button>
+      <button md-button href="#" md-icon-button>
+        <md-icon>more_vert</md-icon>
+      </button>
+    </md-toolbar>
+    <p>An accent toolbar using the second toolbar row:</p>
+    <md-toolbar color="accent">
+      <md-toolbar-row> <span>Second Line Toolbar</span> </md-toolbar-row>
+    </md-toolbar>
+    <p>A primary toolbar using the third toolbar row:</p>
+    <md-toolbar color="primary">
+      <md-toolbar-row></md-toolbar-row>
+      <md-toolbar-row> <span fxFlex>Third Line Toolbar</span>
+        <md-icon>favorite</md-icon>
+        <md-icon>delete</md-icon>
+      </md-toolbar-row>
+    </md-toolbar>
+  </md-card-content>
+</md-card>

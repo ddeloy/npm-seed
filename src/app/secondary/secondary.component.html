@@ -1,0 +1,161 @@
+<md-card>
+  <md-card-title>Radios</md-card-title>
+  <md-card-subtitle>Radio buttons allow the user to select one option from a set</md-card-subtitle>
+  <md-card-content fxLayout="row" fxLayoutWrap="wrap">
+    <div fxFlex="100">
+      <p>Basic Example <br>
+        Using <em>default</em> theming</p>
+      <div fxLayout="column">
+        <md-radio-button name="group1">Option 1</md-radio-button>
+        <md-radio-button name="group1">Option 2</md-radio-button>
+        <md-radio-button name="group1">Option 3</md-radio-button>
+        <md-radio-button name="group1" disabled="true">Option 4 (disabled)</md-radio-button>
+      </div>
+    </div>
+    <div fxFlex="100">
+      <p>Theming Example <br>
+        <code>color</code> attribute on <code>md-radio-button</code> set to <code>primary</code>, <code>accent</code> and <code>warn</code> <br>
+        <em>Note:</em> Default and Accent are same. If no color set, accent would be used</p>
+      <div fxLayout="column">
+        <md-radio-button color="primary" name="group2">Primary</md-radio-button>
+        <md-radio-button color="accent" name="group2">Accent/Secondary</md-radio-button>
+        <md-radio-button color="warn" name="group2">Warn</md-radio-button>
+        <md-radio-button name="group2">Default</md-radio-button>
+      </div>
+    </div>
+    <div fxFlex="100">
+      <p>Dynamic Example <br>
+        Alignment - radio buttons can be positioned before or after their labels by setting <code>align</code> attribute to <code>start</code> or <code>end</code>, respectively. <br>
+        <em>Note:</em> In this example, <code>align</code> has been set on <code>md-radio-group</code>.
+        However, it can be set on individual <code>md-radio-button</code> elements as well.</p>
+      <div>
+        <md-radio-group name="my_options" fxLayout="column">
+          <md-radio-button value="option_1">Option 1</md-radio-button>
+          <md-radio-button value="option_2">Option 2</md-radio-button>
+          <md-radio-button value="option_3">Option 3</md-radio-button>
+        </md-radio-group>
+        <p> </p>
+        <p> <span>
+          <md-checkbox>Align end</md-checkbox>
+          </span> </p>
+      </div>
+    </div>
+  </md-card-content>
+</md-card>
+<md-card>
+  <md-card-title>Autocomplete</md-card-title>
+  <md-card-subtitle>Use auto-complete text fields to present real-time suggestions or completions in dropdowns, so users can enter information more accurately and efficiently.</md-card-subtitle>
+  <md-card-content>
+    <p>Auto Complete needs TypeScript to populate</p>
+  </md-card-content>
+</md-card>
+<md-card>
+  <md-card-title>SnackBar</md-card-title>
+  <md-card-subtitle>MdSnackBar is a service, which opens snack bar notifications in the view.</md-card-subtitle>
+  <md-card-content>
+    <p>SnackBar needs TypeScript to function properly.</p>
+  </md-card-content>
+</md-card>
+<md-card>
+  <md-card-title>Dialog</md-card-title>
+  <md-card-subtitle>MdDialog is a service, which opens dialog components in the view.</md-card-subtitle>
+  <md-card-content>
+    <p>Dialog needs TypeScript and needs to be declared as an EntryComponent to function proiperly.</p>
+  </md-card-content>
+</md-card>
+<md-card>
+  <md-card-title>Wijmo Tables</md-card-title>
+  <md-card-subtitle>Wijmo is a 3rd party suite of Angular components.</md-card-subtitle>
+  <md-card-content>
+    <p>Wijmo needs TypeScript (service) to populate and properties/methods need to bet set.</p>
+  </md-card-content>
+</md-card>
+<md-card>
+  <md-card-title>Select</md-card-title>
+  <md-card-subtitle>Basic Hard Coded Select</md-card-subtitle>
+  <md-card-content>
+    <p>Single Select</p>
+    <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+      <md-select placeholder="Select side width">
+        <md-option value="small">Small</md-option>
+        <md-option value="med">Medium</md-option>
+        <md-option value="lg">Large</md-option>
+        <md-option value="xl">Full</md-option>
+      </md-select>
+    </div>
+    <p>Multi Select</p>
+    <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+      <md-select multiple placeholder="Select side width">
+        <md-option value="small">Small</md-option>
+        <md-option value="med">Medium</md-option>
+        <md-option value="lg">Large</md-option>
+        <md-option value="xl">Full</md-option>
+      </md-select>
+    </div>
+  </md-card-content>
+</md-card>
+<md-card>
+  <md-card-content>
+    <md-card-title>Slider Panel Basic Use Cases</md-card-title>
+    <md-toolbar color="primary"></md-toolbar>
+    <md-sidenav-container class="sidenav-container">
+      <md-sidenav class="sidenav-content" #start opened (open)="myinput.focus()" mode="side"> Start Side Drawer <br>
+        <button md-button color="primary" (click)="start.close()">
+          Close
+        </button>
+        <br>
+        <button md-button color="primary" (click)="end.open()">Open End Side</button>
+        <br>
+        <button md-button color="primary"
+                (click)="start.mode = (start.mode == 'push' ? 'over' : (start.mode == 'over' ? 'side' : 'push'))">Toggle Mode</button>
+        <div>Mode: {{start.mode}}</div>
+        <br>
+        <input #myinput>
+      </md-sidenav>
+      <md-sidenav class="sidenav-content" #end align="end"> End Side Drawer <br>
+        <button md-button color="primary" (click)="end.close()">Close</button>
+      </md-sidenav>
+      <div class="sidenav-content">
+        <p><strong>Content</strong></p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut libero magna, fermentum ut arcu ac, tempor auctor diam. Morbi facilisis ultrices sem posuere varius. Aliquam erat volutpat.</p>
+        <div>
+          <header>Sidenav</header>
+          <button md-button color="primary" (click)="start.toggle()">Toggle Start Side Drawer</button>
+          <button md-button color="primary" (click)="end.toggle()">Toggle End Side Drawer</button>
+        </div>
+        <button md-raised-button color="accent">HELLO</button>
+        <button md-raised-button class="mat-primary">HELLO</button>
+      </div>
+    </md-sidenav-container>
+  </md-card-content>
+</md-card>
+<md-card>
+  <md-card-content>
+    <md-card-title>Slider Panel - Layout that mimics the sample site</md-card-title>
+    <pre>
+       <strong>Just drop this markup in - styling and elements are all part of the Library Module</strong>
+       &lt;md-toolbar class="main-header" color="primary"> &lt;/md-toolbar>
+       &lt;md-sidenav-container class="app-inner">
+          &lt;md-sidenav #sidemenu class="sidebar-panel sidebar-menu-panel"  mode="side" opened>
+          <strong>You can do your own thing with the nav </strong>
+            &lt;md-nav-list class="navigation">
+              &lt;md-list-item>&lt;a href="javascript:void(0);">Home&lt;/a>&lt;/md-list-item>
+              &lt;md-list-item>&lt;a href="javascript:void(0);">Basic&lt;/a>&lt;/md-list-item>
+            &lt;/md-nav-list>
+          &lt;/md-sidenav>
+          &lt;router-outlet>&lt;/router-outlet>
+        &lt;/md-sidenav-container>
+        </pre>
+    <md-toolbar class="main-header" color="primary"> </md-toolbar>
+    <md-sidenav-container class="app-inner">
+      <md-sidenav #sidemenu class="sidebar-panel sidebar-menu-panel"  mode="side" opened>
+        <md-nav-list class="navigation">
+          <md-list-item><a href="javascript:void(0);">Home</a></md-list-item>
+          <md-list-item><a href="javascript:void(0);">Basic</a></md-list-item>
+        </md-nav-list>
+      </md-sidenav>
+      <router-outlet></router-outlet>
+    </md-sidenav-container>
+  </md-card-content>
+</md-card>
+

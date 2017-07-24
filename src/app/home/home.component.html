@@ -24,9 +24,11 @@
     import  &#123;BasicComponent} from "./basic/basic.component";<br/><br/>
 
     const APP_ROUTES = [<br/>
-    &#123;path:'', component:HomeComponent}, // This needs to be imported and declared in app.module.ts in order to have access to md-modules<br/>
-    &#123;path: 'basic', component:BasicComponent} // // This needs to be imported and declared in app.module.ts in order to have access to md-modules<br/>
-    &#123;path: 'wijmo', loadChildren:'app/wijmo/wijmo.module#WijmoModule'} // This is a feature module - notice no import here and no import in app.module.ts.<br/>
+    &#123;path:'', component: HomeComponent}, // This needs to be imported and declared in app.module.ts in order to have access to md-modules<br/>
+    &#123;path: 'basic', component: BasicComponent} // // This needs to be imported and declared in app.module.ts in order to have access to md-modules<br/>
+    &#123;path: 'secondaryr', component: SecondaryComponent} // // This needs to be imported and declared in app.module.ts in order to have access to md-modules<br/>
+    &#123;path: 'other', component: OtherComponent} // // This needs to be imported and declared in app.module.ts in order to have access to md-modules<br/>
+    &#123;path: 'wijmo', loadChildren: 'app/wijmo/wijmo.module#WijmoModule'} // This is a feature module - notice no import here and no import in app.module.ts.<br/>
      It has a separate directory and routing file - only imports dependencies it needs. And is loaded on demand. The wijmo routing ts file is imported by the WijmoModule.<br/>
      This is not implemented yet - but once in place I will document the structure.<br/>
     ]<br/><br/>
@@ -39,6 +41,8 @@
       navs = [<br/>
       &#123;url: "", content: "Home"},<br/>
       &#123;url: "basic", content: "Basic"}<br/>
+      &#123;url: "secondary", content: "Secondary"},<br/>
+      &#123;url: "other", content: "Other"}<br/>
       ];
     </div>
     <br/>
