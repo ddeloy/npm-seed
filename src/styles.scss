@@ -1,1 +1,17 @@
 @import '~@ddeloy/dd-library/styles/app';
+
+.mat-input-infix {
+  padding: 0.4375em 0;
+  border-top: 0.84375em solid transparent;
+}
+
+@media only screen and (min-width: 960px){
+
+label:not([class^='mat-']):not([class*=' mat-']) > span {
+  font-size: 0.75rem;
+  height: 15px;
+  line-height: 16px;
+ // margin-bottom: -15px;
+  margin-bottom:10px;
+}}
+

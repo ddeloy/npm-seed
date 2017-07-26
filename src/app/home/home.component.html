@@ -1,4 +1,72 @@
 <md-card>
+  <md-card-content>
+    <md-card-title>Slider Panel - with Menu</md-card-title>
+    <p><strong>Added as a custom component to Library</strong></p>
+    <strong>In my home.component.ts (or whatever component you want to use slider panel with menu).:</strong>
+    <pre>
+       <strong>import &#123; SidenavMenuItem } from '@ddeloy/dd-library';</strong>
+       <strong>Define the menuItems array (based on the following structure) for use in the markup</strong>
+        menuItems = [
+        new SidenavMenuItem('Settings', 'User Management', ' ', ' ', [
+        new SidenavMenuItem(' ', 'Company Settings', ' ', ' ', null),
+        new SidenavMenuItem(' ', 'User Management', ' ', ' ', null),
+        new SidenavMenuItem(' ', 'Shared Settings', ' ', ' ', null)
+        ]),
+        new SidenavMenuItem(' ', 'Users', ' ', ' ', null),
+        new SidenavMenuItem(' ', 'Non-employee access', ' ', ' ', null),
+        new SidenavMenuItem(' ', 'Roles', ' ', ' ', null),
+        new SidenavMenuItem(' ', 'Data Access Groups', ' ', ' ', null)
+        ];
+        </pre>
+    <strong>Then the markup to create the example below would look like this:</strong>
+    <pre>
+        &lt;md-toolbar color="primary">&lt;/md-toolbar>
+        &lt;md-sidenav-container class="sidenav-container">
+          &lt;md-sidenav class="sidenav-menu" mode="side" opened align="start">
+            &lt;ul>
+              &lt;sidenav-item *ngFor="let menuItem of menuItems" [menuItem]="menuItem">&lt;/sidenav-item>
+            &lt;/ul>
+          &lt;/md-sidenav>
+          &lt;div class="sidenav-content">
+            Content goes here
+          &lt;/div>
+        &lt;/md-sidenav-container>
+      </pre>
+    <md-toolbar color="primary"></md-toolbar>
+    <md-sidenav-container class="sidenav-container">
+      <md-sidenav class="sidenav-menu" mode="side" opened align="start">
+        <ul>
+          <sidenav-item *ngFor="let menuItem of menuItems" [menuItem]="menuItem"></sidenav-item>
+        </ul>
+      </md-sidenav>
+      <div class="sidenav-content"> <strong>Slider Panel Content</strong>
+        <p>The left side panel has a side item component that ...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut libero magna, fermentum ut arcu ac, tempor auctor diam. Morbi facilisis ultrices sem posuere varius. Aliquam erat volutpat.</p>
+        <p>Duis convallis orci vitae iaculis mollis. Ut aliquet sagittis mi id blandit. Nullam quis odio vitae ante vulputate cursus. Morbi venenatis scelerisque tortor. Donec lacinia porta lorem ac lobortis. Vivamus egestas porta sem ac accumsan. Integer libero turpis, elementum et feugiat sit amet, scelerisque eget elit. Nulla porttitor vehicula orci, eu molestie quam consectetur nec. Maecenas nec quam porta, mattis nibh non, pellentesque massa. Donec elit arcu, maximus et sodales ut, eleifend ut tortor. Cras posuere est ac mauris faucibus dictum.
+          Phasellus a suscipit nulla. In at malesuada justo. Fusce ut sapien porta, auctor tellus eleifend, ultrices mi.</p>
+        <p>Donec aliquet mollis risus tincidunt vestibulum. Nunc semper mattis nisi, non bibendum lectus. Cras accumsan augue dui, ut tincidunt orci pharetra auctor. In suscipit, mi vel faucibus consectetur, dui nibh pulvinar dui, vitae bibendum metus quam vitae ante. Nunc aliquam felis at mauris elementum, eleifend congue purus malesuada. Cras laoreet ipsum vitae orci condimentum, eu mattis mauris tincidunt. Nulla ultrices, libero maximus iaculis egestas, lacus dolor lobortis est, nec eleifend mi diam scelerisque mauris. Quisque rutrum malesuada dui, eu laoreet tortor hendrerit a.
+          Quisque interdum ipsum a mauris molestie tempus.</p>
+        <p>Duis convallis orci vitae iaculis mollis. Ut aliquet sagittis mi id blandit. Nullam quis odio vitae ante vulputate cursus. Morbi venenatis scelerisque tortor. Donec lacinia porta lorem ac lobortis. Vivamus egestas porta sem ac accumsan. Integer libero turpis, elementum et feugiat sit amet, scelerisque eget elit. Nulla porttitor vehicula orci, eu molestie quam consectetur nec. Maecenas nec quam porta, mattis nibh non, pellentesque massa. Donec elit arcu, maximus et sodales ut, eleifend ut tortor. Cras posuere est ac mauris faucibus dictum.
+          Phasellus a suscipit nulla. In at malesuada justo. Fusce ut sapien porta, auctor tellus eleifend, ultrices mi.</p>
+        <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+          <md-input-container class="ml-xs mr-xs">
+            <input mdInput placeholder="Name" type="text">
+          </md-input-container>
+          <md-input-container floatplaceholder="auto" class="ml-xs mr-xs">
+            <input mdInput placeholder="Email" type="email">
+          </md-input-container>
+        </div>
+        <p>
+          <button md-raised-button color="primary">Some Button</button>
+        </p>
+      </div>
+    </md-sidenav-container>
+  </md-card-content>
+</md-card>
+
+
+
+  <md-card>
   <md-card-title> <h3>I am the Home Component</h3></md-card-title>
   <md-card-subtitle>I am imported at root module level</md-card-subtitle>
   <md-card-content>
