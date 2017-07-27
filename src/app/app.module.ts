@@ -9,6 +9,8 @@ import {HomeComponent } from "./home/home.component";
 import { BasicComponent } from './basic/basic.component';
 import { SecondaryComponent } from './secondary/secondary.component';
 import { OtherComponent } from './other/other.component';
+import { WijmoTableComponent } from './wijmo/wijmo.table.component';
+import {DataSvc} from "./services/DataSvc";
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { OtherComponent } from './other/other.component';
     HomeComponent,
     BasicComponent,
     SecondaryComponent,
-    OtherComponent
+    OtherComponent,
+    WijmoTableComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,7 @@ import { OtherComponent } from './other/other.component';
     FormsModule,
     routing
   ],
-  providers: [],
+  providers: [DataSvc],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,179 @@
+<md-card>
+  <md-card-content>
+    <h3>Wijmo Angular Component Collection - Tables</h3>
+    <a href="http://ddeloy.net/flexgrid-ex-2/" target="_blank">TypeScript Documentation</a><br/>
+    <a href="http://wijmo.com/angular2/" target="_blank">Wijmo Component Collection</a>
+    <p>Responsive: Card view based on Zeplin spec when mobile breakpoint hit.</p>
+    <div class="sGrid">
+      <table class="table-wijmo">
+        <caption>
+        15 Leafy Green Orders
+        <button md-button>Edit</button>
+        </caption>
+        <thead>
+          <tr class="active">
+            <th *ngFor="let fieldName of fieldNames">{{fieldName}}</th>
+            <th class="th-nav-arrow"></th>
+            <th class="th-action">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cvGettingStarted.items">
+            <td *ngFor="let name of fieldNames"[ngClass]="{
+                'primary-info': name === dataPrimary,
+                'secondary-info': name === dataSecondary,
+                'extra-info': name === dataExtra}"> {{item[name] | globalize}} </td>
+            <td class="td-nav-arrow"><md-icon>keyboard_arrow_right</md-icon></td>
+            <td class="td-action"><md-icon>more_horiz</md-icon></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br/>
+    <h4>Current Record Management</h4>
+    <div style="margin-bottom: 10px;">
+      <button md-raised-button md-button-sm color="accent" (click)="cvCRM.moveCurrentToNext()">Next</button>
+      <button md-raised-button md-button-sm color="accent" (click)="cvCRM.moveCurrentToPrevious()">Previous</button>
+      <button md-raised-button md-button-sm color="accent" (click)="stopCurrent()">Stop at 4th Row</button>
+      <button md-raised-button md-button-sm color="accent" (click)="reset()">Clear</button>
+    </div>
+    <div class="sGrid">
+      <table class="table-wijmo table-wijmo-hover">
+        <thead>
+          <tr class="active">
+            <th class="wijmo-text-center" *ngFor="let fieldName of fieldNames">{{fieldName}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cvCRM.items"
+            [ngClass]="{success: item == cvCRM.currentItem}"
+            (click)="cvCRM.moveCurrentTo(item)">
+            <td *ngFor="let name of fieldNames" [ngClass]="{
+              'primary-info': name === dataPrimary,
+              'secondary-info': name === dataSecondary,
+              'extra-info': name === dataExtra}"> {{item[name] | globalize}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- sorting -->
+    <h4>Sorting</h4>
+    <p>Click column to sort</p>
+    <div class="sGrid">
+      <table class="table-wijmo table-wijmo-sort">
+        <thead>
+          <tr class="active">
+            <th *ngFor="let fieldName of fieldNames"
+              (click)="toggleSort(fieldName)">{{fieldName}}<span style="color: #47b555">{{getSort(fieldName)}}</span> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cvSorting.items">
+            <td *ngFor="let name of fieldNames" [ngClass]="{
+                'primary-info': name === dataPrimary,
+                'secondary-info': name === dataSecondary,
+                'extra-info': name === dataExtra}"> {{item[name] | globalize}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- filtering -->
+    <h4>Filtering</h4>
+    <md-input-container floatPlaceholder="never" class="md-block">
+      <input mdInput placeholder="Filter by country" type="text" [(ngModel)]="filter">
+    </md-input-container>
+    <div class="sGrid">
+      <table class="table-wijmo table-wijmo-hover">
+        <thead>
+          <tr class="active">
+            <th *ngFor="let fieldName of fieldNames">{{fieldName}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cvFiltering.items">
+            <td *ngFor="let name of fieldNames" [ngClass]="{
+                'primary-info': name === dataPrimary,
+                'secondary-info': name === dataSecondary,
+                'extra-info': name === dataExtra}"> {{item[name] | globalize}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- grouping -->
+    <h4>Grouping</h4>
+    <div fxLayout="row" fxLayoutAlign="start center" class="mb-2">
+      <label class="ml-xs mr-xs"> <span>Group by field:</span>
+        <md-select placeholder="Select a field" [(ngModel)]="selectedGroupOpt" floatPlaceholder="never">
+          <md-option [value]="''" >None</md-option>
+          <md-option *ngFor="let name of fieldNames"  [value]="name">{{ name }}</md-option>
+        </md-select>
+      </label>
+    </div>
+    <div class="sGrid">
+      <table class="table-wijmo">
+        <thead>
+          <tr class="active">
+            <th *ngFor="let fieldName of fieldNames">{{fieldName}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of groupItems">
+            <td class="active"  [ngStyle]="{display:isGroupItem(item)? '':'none'}"   colspan="6"><span [ngStyle]="{display:'inline-block', width: (item.level*25) + 'px'}"></span> <b>{{item.name | globalize}}</b> ({{item.items?.length}} items) </td>
+            <td class="wijmo-text-center" colspan="2"  [ngStyle]="{display:isGroupItem(item)? '':'none'}" > {{avgAmount(item)}} </td>
+            <td *ngFor="let name of fieldNames" [ngClass]="{
+                'primary-info': name === dataPrimary,
+                'secondary-info': name === dataSecondary,
+                'extra-info': name === dataExtra}"
+              [ngStyle]="{display:isGroupItem(item)? 'none':''}"> {{item[name] | globalize}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- paging -->
+    <h4>Paging</h4>
+    <md-input-container hintLabel="0 or empty is for no paging" floatPlaceholder="never" class="md-block">
+      <input mdInput placeholder="0 or empty is for no paging." number-input type="text" [(ngModel)]="cvPaging.pageSize" >
+    </md-input-container>
+    <div>
+      <button md-icon-button color="accent" [disabled]="cvPaging.pageIndex <= 0"
+              (click)="cvPaging.moveToFirstPage()">
+      <md-icon>fast_rewind</md-icon>
+      </button>
+      <button md-icon-button color="accent"[disabled]="cvPaging.pageIndex <= 0"
+              (click)="cvPaging.moveToPreviousPage()">
+      <md-icon>skip_previous</md-icon>
+      </button>
+      <button md-button disabled style="width:100px"> {{cvPaging.pageIndex + 1 | number}}
+      / {{cvPaging.pageCount | number}} </button>
+      <button md-icon-button color="accent"[disabled]="cvPaging.pageIndex >= cvPaging.pageCount - 1"
+              (click)="cvPaging.moveToNextPage()">
+      <md-icon>skip_next</md-icon>
+      </button>
+      <button md-icon-button color="accent"[disabled]="cvPaging.pageIndex >= cvPaging.pageCount - 1"
+              (click)="cvPaging.moveToLastPage()">
+      <md-icon>fast_forward</md-icon>
+      </button>
+    </div>
+    <div class="sGrid">
+      <table class="table-wijmo">
+        <thead>
+          <tr class="active">
+            <th *ngFor="let fieldName of fieldNames">{{fieldName}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cvPaging.items">
+            <td *ngFor="let name of fieldNames" [ngClass]="{
+                'primary-info': name === dataPrimary,
+                'secondary-info': name === dataSecondary,
+                'extra-info': name === dataExtra}"> {{item[name] | globalize}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </md-card-content>
+</md-card>

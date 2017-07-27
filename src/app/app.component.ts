@@ -10,7 +10,7 @@ export class AppComponent {
     {url: "", content: "Home"},
     {url: "basic", content: "Basic"},
     {url: "secondary", content: "Secondary"},
-    {url: "other", content: "Other"}
+    {url: "wijmo", content: "Wijmo"}
 
   ];
 
