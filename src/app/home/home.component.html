@@ -1,5 +1,271 @@
 <md-card>
   <md-card-content>
+    <md-card-title>Toolbar with custom menu component: &lt;top-menu>&lt;/top-menu></md-card-title>
+    <p><strong>The model and template are included in the package globally. No need to add any import to use.</strong></p>
+    <strong>Toolbar from 'menu' page on sample site: HTML Markup:</strong>
+   <pre>
+   &lt;md-toolbar>
+      &lt;top-menu [color]="color" [items]="customItems">&lt;/top-menu>
+      /* [color] was not in my original prototype. Need to check with Raman on why this is here */
+      /* [items] = 'whatever you decide to name the array' */
+   &lt;/md-toolbar>
+   </pre>
+    <md-toolbar>
+      <top-menu [color]="color" [items]="customItems"></top-menu>
+    </md-toolbar>
+    <br/>
+    <strong>Toolbar from 'toolbar' page on sample site: HTML Markup</strong>
+    <pre>
+    &lt;md-toolbar>
+      &lt;&lt;a href="#" class="brand-logo">Logo&lt;/a>
+      &lt;top-menu [color]="color" [items]="customItems">&lt;/top-menu>
+      &lt;span fxFlex>&lt;/span>
+      &lt;button md-button href="#" md-icon-button color="primary">
+        &lt;md-icon>apps&lt;/md-icon>
+      &lt;/button>
+      &lt;button md-button href="#" class="btn-user" md-icon-button>
+        &lt;span>KJ&lt;/span>
+      &lt;/button>
+      &lt;button md-button href="#" class="btn-notification" md-icon-button color="primary">
+        &lt;md-icon>notifications_none&lt;/md-icon>
+        &lt;span class="badge">2&lt;/span>
+      &lt;/button>
+    &lt;/md-toolbar>
+    </pre>
+
+    <md-toolbar>
+      <a href="#" class="brand-logo">Logo</a>
+      <top-menu [color]="color" [items]="customItems"></top-menu>
+      <span fxFlex></span>
+      <button md-button href="#" md-icon-button color="primary">
+        <md-icon>apps</md-icon>
+      </button>
+      <button md-button href="#" class="btn-user" md-icon-button>
+        <span>KJ</span>
+      </button>
+      <button md-button href="#" class="btn-notification" md-icon-button color="primary">
+        <md-icon>notifications_none</md-icon>
+        <span class="badge">2</span>
+      </button>
+    </md-toolbar>
+  <br/>
+  <strong>The TypeScript for both:</strong>
+  <pre>
+  <strong>Add the code below to the TypeScript in component where you want to use the top-menu.
+  The structure should be pretty self explanatory.</strong> <br/>
+  color = ''; // Need to check with Raman why this property has been added
+  /* Custom menu structure */
+  /* TOD DO: Need to add link object here and then update template so can dynamically pass in routerLink */
+  customItems = [ // use whatever name you like
+    &#123;
+      text: 'Orders',
+      items: [
+        &#123;
+          text: 'Share',
+          extraText: 'Ctrl+O' // shows to right
+        },
+        &#123;
+          text: 'New',
+          icon: 'arrow_right',
+          items: [
+            &#123;
+              text: 'Document'
+            },
+           &#123;
+              text: 'New',
+              icon: 'arrow_right',
+              items: [
+                &#123;
+                  text: 'New',
+                  icon: 'arrow_right',
+                  items: [
+                    &#123;
+                      text: 'Document'
+                    },
+                    &#123;
+                      text: 'Spreadsheet'
+                    }
+                  ]
+                },
+                &#123;
+                  text: 'Document',
+                  icon: 'arrow_right',
+                  items: [
+                    &#123;
+                      text: 'Document 1'
+                    },
+                    &#123;
+                      text: 'Document 2'
+                    }
+                  ]
+                }
+              ]
+            },
+            &#123;
+              text: 'Spreadsheet'
+            },
+            &#123;
+              text: 'Presentation',
+              icon: 'arrow_right',
+              items: [
+                &#123;
+                  text: 'New',
+                  icon: 'arrow_right',
+                  items: [
+                    &#123;
+                      text: 'Document'
+                    },
+                    &#123;
+                      text: 'Spreadsheet'
+                    }
+                  ]
+                }
+              ]
+            },
+            &#123;
+              text: 'Form'
+            }
+          ]
+        },
+        &#123;
+          divider: true
+        },
+        &#123;
+          text: 'Open',
+          // could show keyboard command - or whatever we want extraText: 'Ctrl+O'
+        },
+        &#123;
+          text: 'Rename',
+          disabled: true
+        },
+        &#123;
+          divider: true
+        },
+        &#123;
+          text: 'Print',
+          // extraText: 'Ctrl+P'
+        }
+      ]
+    },
+    &#123;
+      text: 'File',
+      items: [
+        &#123;
+          isCategory: true,
+          text: 'File',
+          items: [&#123;
+            text: 'New'
+          }, &#123;
+            text: 'Save'
+          }, &#123;
+            text: 'Save As',
+            icon: 'arrow_right',
+            items: [
+              &#123;
+                text: 'Print layout'
+              },
+              &#123;
+                text: 'Mode'
+              },
+              &#123;
+                divider: true
+              },
+              &#123;
+                text: 'Full screen'
+              },
+            ]
+          }]
+        },
+        &#123;
+          isCategory: true,
+          text: 'Other Action',
+          items: [&#123;
+            text: 'Delete'
+          }, &#123;
+            text: 'Exit'
+          }]
+        }
+      ]
+    },
+    &#123;
+      text: 'Edit',
+      items: [
+        &#123;
+          isCategory: true,
+          text: 'Action',
+          items: [&#123;
+            text: 'Undo'
+          }, &#123;
+            text: 'Redo'
+          }, &#123;
+            text: 'Revert to Original'
+          }]
+        },
+        &#123;
+          isCategory: true,
+          text: 'Content',
+          items: [&#123;
+            text: 'Copy'
+          }, &#123;
+            text: 'Paste'
+          }, &#123;
+            text: 'Select All'
+          }]
+        },
+        &#123;
+          isCategory: true,
+          text: 'Other Actions',
+          items: [&#123;
+            text: 'Delete'
+          }, &#123;
+            text: 'Delete All'
+          }, &#123;
+            text: 'Highlight All'
+          }]
+        }
+      ]
+    },
+    &#123;
+      text: 'View',
+      items: [
+        &#123;
+          text: 'Print layout'
+        },
+        &#123;
+          text: 'Mode',
+          icon: 'arrow_right',
+          items: &#123;
+            &#123;
+              text: 'Presentation'
+            },
+            &#123;
+              text: 'Edit'
+            },
+            &#123;
+              text: 'Modifiable'
+            }
+          ]
+        },
+        &#123;
+          divider: true
+        },
+        &#123;
+          text: 'Full screen'
+        },
+      ]
+    },
+  ];
+
+  select(text: string) &#123;
+    this.selected = text;
+  }
+    </pre>
+
+
+  </md-card-content>
+</md-card>
+<md-card>
+  <md-card-content>
     <md-card-title>Slider Panel - with Menu</md-card-title>
     <p><strong>Added as a custom component to Library</strong></p>
     <strong>In my home.component.ts (or whatever component you want to use slider panel with menu).:</strong>
