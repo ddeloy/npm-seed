@@ -2,19 +2,15 @@
   <md-card-content>
     <md-card-title>Toolbar with custom menu component: &lt;top-menu>&lt;/top-menu></md-card-title>
     <p><strong>The model and template are included in the package globally. No need to add any import to use.</strong></p>
+    <p><strong>New: </strong>Dynamic Routing - See Demo Site for documentation. Links are active under 'Orders' dropdown.</p>
     <strong>Toolbar from 'menu' page on sample site: HTML Markup:</strong>
    <pre>
    &lt;md-toolbar>
       &lt;top-menu [color]="color" [items]="customItems">&lt;/top-menu>
-      /* [color] was not in my original prototype. Need to check with Raman on why this is here */
-      /* [items] = 'whatever you decide to name the array' */
    &lt;/md-toolbar>
    </pre>
-    <md-toolbar>
-      <top-menu [color]="color" [items]="customItems"></top-menu>
-    </md-toolbar>
-    <br/>
-    <strong>Toolbar from 'toolbar' page on sample site: HTML Markup</strong>
+     <br/>
+    <strong>Toolbar markup from 'toolbar' page on sample site: HTML Markup</strong>
     <pre>
     &lt;md-toolbar>
       &lt;&lt;a href="#" class="brand-logo">Logo&lt;/a>
@@ -32,44 +28,29 @@
       &lt;/button>
     &lt;/md-toolbar>
     </pre>
-
-    <md-toolbar>
-      <a href="#" class="brand-logo">Logo</a>
-      <top-menu [color]="color" [items]="customItems"></top-menu>
-      <span fxFlex></span>
-      <button md-button href="#" md-icon-button color="primary">
-        <md-icon>apps</md-icon>
-      </button>
-      <button md-button href="#" class="btn-user" md-icon-button>
-        <span>KJ</span>
-      </button>
-      <button md-button href="#" class="btn-notification" md-icon-button color="primary">
-        <md-icon>notifications_none</md-icon>
-        <span class="badge">2</span>
-      </button>
-    </md-toolbar>
   <br/>
   <strong>The TypeScript for both:</strong>
   <pre>
   <strong>Add the code below to the TypeScript in component where you want to use the top-menu.
   The structure should be pretty self explanatory.</strong> <br/>
-  color = ''; // Need to check with Raman why this property has been added
   /* Custom menu structure */
-  /* TOD DO: Need to add link object here and then update template so can dynamically pass in routerLink */
+  /* Dynamic linking */
   customItems = [ // use whatever name you like
     &#123;
       text: 'Orders',
       items: [
         &#123;
-          text: 'Share',
+          text: 'Basic',
           extraText: 'Ctrl+O' // shows to right
+          link: 'basic'
         },
         &#123;
           text: 'New',
           icon: 'arrow_right',
           items: [
             &#123;
-              text: 'Document'
+              text: 'Secondary',
+              link: 'secondary'
             },
            &#123;
               text: 'New',
@@ -131,7 +112,8 @@
           divider: true
         },
         &#123;
-          text: 'Open',
+          text: 'Wijmo',
+          link: 'wijmo'
           // could show keyboard command - or whatever we want extraText: 'Ctrl+O'
         },
         &#123;
@@ -142,7 +124,8 @@
           divider: true
         },
         &#123;
-          text: 'Print',
+          text: 'Home',
+          link: ' '
           // extraText: 'Ctrl+P'
         }
       ]
