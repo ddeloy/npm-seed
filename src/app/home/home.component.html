@@ -5,14 +5,16 @@
     <p><strong>New: </strong>Dynamic Routing - See Demo Site for documentation. Links are active under 'Orders' dropdown.</p>
     <strong>Toolbar from 'menu' page on sample site: HTML Markup:</strong>
    <pre>
-   &lt;md-toolbar>
+   &lt;md-toolbar color="default">
+      &lt;!-- if you don't set a color - yoour toolbar with be 'flat' -->
       &lt;top-menu [color]="color" [items]="customItems">&lt;/top-menu>
    &lt;/md-toolbar>
    </pre>
      <br/>
     <strong>Toolbar markup from 'toolbar' page on sample site: HTML Markup</strong>
     <pre>
-    &lt;md-toolbar>
+    &lt;md-toolbar color="default">
+      &lt;!-- if you don't set a color - yoour toolbar with be 'flat' -->
       &lt;&lt;a href="#" class="brand-logo">Logo&lt;/a>
       &lt;top-menu [color]="color" [items]="customItems">&lt;/top-menu>
       &lt;span fxFlex>&lt;/span>
