@@ -7,16 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   navs = [
-    {url: "", content: "Home"},
-    {url: "basic", content: "Basic"},
-    {url: "secondary", content: "Secondary"},
-    {url: "wijmo", content: "Wijmo"}
+    {url: '', content: 'Home'},
+    {url: 'basic', content: 'Basic'},
+    {url: 'secondary', content: 'Secondary'},
+    {url: 'wijmo', content: 'Wijmo'}
 
   ];
 
   color = '';
   /* Custom menu structure */
-  /* TOD DO: Need to add link object here and then update template */
   customItems = [
     {
       text: 'Orders',

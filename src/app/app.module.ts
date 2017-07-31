@@ -11,6 +11,10 @@ import { SecondaryComponent } from './secondary/secondary.component';
 import { OtherComponent } from './other/other.component';
 import { WijmoTableComponent } from './wijmo/wijmo.table.component';
 import {DataSvc} from "./services/DataSvc";
+import { NestedMenuComponent } from './nested-menu.component';
+import {RouterModule} from "@angular/router";
+// import {dougRouting} from "./doug/doug.routing";
+
 
 @NgModule({
   declarations: [
@@ -19,14 +23,17 @@ import {DataSvc} from "./services/DataSvc";
     BasicComponent,
     SecondaryComponent,
     OtherComponent,
-    WijmoTableComponent
+    WijmoTableComponent,
+    NestedMenuComponent,
   ],
   imports: [
     BrowserModule,
     LibraryModule,
     CommonModule,
     FormsModule,
-    routing
+    RouterModule,
+    routing,
+  //  dougRouting
   ],
   providers: [DataSvc],
   bootstrap: [AppComponent]

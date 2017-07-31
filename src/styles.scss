@@ -1,3 +1,77 @@
 @import '~@ddeloy/dd-library/styles/app';
 
 
+
+app-nested-menu {
+  height: inherit;
+  & > [md-button].mat-button:not(.mat-icon-button),
+  & > [md-raised-button].mat-raised-button:not(.mat-icon-button) {
+    height: inherit;
+    border-radius: 0;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color .3s;
+    font-size: $default-item-font-size;
+    font-weight: $font-weight-bold;
+    color: $default-item-color;
+    background-color: transparent;
+    padding: 0 14px;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    &.active {
+      background-color: $default-hover-color;
+    }
+    &:hover, &.open {
+      box-shadow: none;
+      background-color: $default-hover-color;
+      border-bottom-color: map-get($primary, 500);
+      &.mat-primary {
+        border-bottom-color: map-get($primary, 500);
+      }
+      &.mat-accent {
+        border-bottom-color: map-get($accent, 500);
+      }
+      &.mat-warn {
+        border-bottom-color: map-get($warn, 500);
+      }
+    }
+    // &.btn-icon {
+    //   span.mat-button-wrapper {
+    //     font-family: 'Material Icons';
+    //     font-weight: normal;
+    //     font-style: normal;
+    //     letter-spacing: normal;
+    //     text-transform: none;
+    //     white-space: nowrap;
+    //     word-wrap: normal;
+    //     direction: ltr;
+    //     -webkit-font-feature-settings: 'liga';
+    //     -webkit-font-smoothing: antialiased;
+    //     font-size: 20px;
+    //     width: 20px;
+    //     height: 20px;
+    //     vertical-align: middle;
+    //   }
+    // }
+    &.btn-user {
+      padding: 0 8px;
+      span.mat-button-wrapper {
+        color: #ffffff;
+        font-size: $default-item-font-size;
+        vertical-align: baseline;
+        padding: 8.5px 8px;
+        border-radius: 50%;
+        background-color: mat-color($accent, 400);
+      }
+    }
+  }
+}
+
+app-nested-menu [md-button] {
+  z-index: 1001;
+  line-height: 64px;
+  color: #fff;
+}
+

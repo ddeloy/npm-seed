@@ -11,10 +11,11 @@
    &lt;/md-toolbar>
    </pre>
      <br/>
-    <strong>Toolbar markup from 'toolbar' page on sample site: HTML Markup</strong>
+    <strong>Toolbar markup more custom 'toolbar' page on sample site: HTML Markup</strong>
+    <p><strong>Note: </strong>Right menu items are not active. Please see the sample site for documentation on this.</p>
     <pre>
-    &lt;md-toolbar color="default">
-      &lt;!-- if you don't set a color - your toolbar with be 'flat' -->
+    &lt;md-toolbar>
+      &lt;!-- You don't want to set a toolbar color here - or you will lose overall styling -->
       &lt;a href="#" class="brand-logo">Logo&lt;/a>
       &lt;top-menu [color]="color" [items]="customItems">&lt;/top-menu>
       &lt;span fxFlex>&lt;/span>
@@ -30,8 +31,23 @@
       &lt;/button>
     &lt;/md-toolbar>
     </pre>
+    <md-toolbar>
+    <a href="#" class="brand-logo">Logo</a>
+    <top-menu [color]="color" [items]="toolbarItems"></top-menu>
+    <span fxFlex></span>
+    <button md-button href="#" md-icon-button color="primary">
+      <md-icon>apps</md-icon>
+    </button>
+    <button md-button href="#" class="btn-user" md-icon-button>
+      <span>KJ</span>
+    </button>
+    <button md-button href="#" class="btn-notification" md-icon-button color="primary">
+      <md-icon>notifications_none</md-icon>
+     <span class="badge">2</span>
+    </button>
+    </md-toolbar>
   <br/>
-  <strong>The TypeScript for both:</strong>
+    <p><strong>The TypeScript for both:</strong> See sample site for updated array options.</p>
   <pre>
   <strong>Add the code below to the TypeScript in component where you want to use the top-menu.
   The structure should be pretty self explanatory.</strong> <br/>

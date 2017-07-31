@@ -10,7 +10,10 @@ const APP_ROUTES = [
   {path: 'basic', component:BasicComponent},
   {path: 'secondary', component:SecondaryComponent},
   {path: 'other', component:OtherComponent},
-  {path: 'wijmo', component:WijmoTableComponent}
+  {path: 'wijmo', component:WijmoTableComponent},
+//  {path: 'people', loadChildren:'app/doug/doug.module#DougModule'}
+
 ]
 
-export const routing = RouterModule.forRoot(APP_ROUTES, {useHash:true});
+ //export const routing = RouterModule.forRoot(APP_ROUTES, {useHash:true});
+ export const routing = RouterModule.forRoot(APP_ROUTES);
