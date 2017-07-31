@@ -1,9 +1,7 @@
 import * as wjcCore from 'wijmo/wijmo';
-import {WijmoTableModule } from '@ddeloy/dd-library';
-import { TopMenuComponent } from '@ddeloy/dd-library';
 
 // Angular
-import { Component, EventEmitter, Provider, Input, Inject, enableProdMode, NgModule } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { DataSvc } from '../services/DataSvc';
 
 // The feature component.
