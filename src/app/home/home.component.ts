@@ -22,14 +22,13 @@ export class HomeComponent implements OnInit {
 
   color = '';
   /* Custom menu structure */
-  /* TOD DO: Need to add link object here and then update template */
-  toolbarItems = [
+   toolbarItems = [
     {
       text: 'Orders',
       items: [
         {
           text: 'Basic',
-          link:'basic',
+          link: 'basic',
           extraText: 'Ctrl+O'
         },
         {
@@ -38,7 +37,7 @@ export class HomeComponent implements OnInit {
           items: [
             {
               text: 'Secondary',
-              link:'secondary'
+              link: 'secondary'
             },
             {
               text: 'New',
@@ -101,7 +100,7 @@ export class HomeComponent implements OnInit {
         },
         {
           text: 'Wijmo',
-          link:'wijmo'
+          link: 'wijmo'
           // could show keyboard command - or whatever we want extraText: 'Ctrl+O'
         },
         {
@@ -113,7 +112,7 @@ export class HomeComponent implements OnInit {
         },
         {
           text: 'Home',
-          link:''
+          link: ''
           // extraText: 'Ctrl+P'
         }
       ]

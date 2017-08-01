@@ -10,10 +10,7 @@ export class AppComponent {
     {url: '', content: 'Home'},
     {url: 'basic', content: 'Basic'},
     {url: 'secondary', content: 'Secondary'},
-    {url: 'wijmo', content: 'Wijmo'},
-  //  {url: 'doug', content: 'Doug'},
-
-
+    {url: 'wijmo', content: 'Wijmo'}
   ];
 
   color = '';
@@ -24,7 +21,7 @@ export class AppComponent {
       items: [
         {
           text: 'Basic',
-          link:'basic',
+          link: 'basic',
           extraText: 'Ctrl+O'
         },
         {
@@ -33,7 +30,7 @@ export class AppComponent {
           items: [
             {
               text: 'Secondary',
-              link:'secondary'
+              link: 'secondary'
             },
             {
               text: 'New',
@@ -96,7 +93,7 @@ export class AppComponent {
         },
         {
           text: 'Wijmo',
-          link:'wijmo'
+          link: 'wijmo'
           // could show keyboard command - or whatever we want extraText: 'Ctrl+O'
         },
         {

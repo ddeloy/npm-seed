@@ -11,7 +11,7 @@ import { SecondaryComponent } from './secondary/secondary.component';
 import { OtherComponent } from './other/other.component';
 import { WijmoTableComponent } from './wijmo/wijmo.table.component';
 import { DataSvc } from './services/DataSvc';
-import { NestedMenuComponent } from './shared/nested-menu.component';
+import { NestedMenuComponent } from './custom/nested-menu.component';
 import { routing } from './app.routes';
 
 @NgModule({

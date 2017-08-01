@@ -14,7 +14,6 @@
 
 <ng-template #subMenu let-items let-level="level">
   <ng-container *ngFor="let item of items">
-
     <ng-container *ngIf="item.isCategory else subMenuItems">
       <div class="menu-category-wrap">
         <span class="menu-category">{{item.text}}</span>
@@ -38,12 +37,7 @@
             <md-divider *ngIf="item.divider" class="mat-divider"></md-divider>
           </ng-container>
           <ng-template #simpleTmpl>
-            <!--  <button *ngIf="!item.divider && !item.isCategory" md-menu-item [disabled]="item.disabled" [routerLink]="item.link" (click)="closeMenu()">
-                <span>{{item.text}}</span>
-                <span *ngIf="item.extraText" class="menu-extra-text">{{item.extraText}}</span>
-              </button> -->
-            <!-- There are a few quirks using [routerLink] in our component (which is essentially a child component)
-            when it’s being delivered in current library format. Need to use href for it to work as a library depency -->
+         <!-- If want to use as a Library Component - need to use href and useHash:true for it to work -->
          <!--   <a href="#/{{item.link}}" *ngIf="!item.divider && !item.isCategory" md-menu-item [disabled]="item.disabled" (click)="closeMenu()"> -->
             <button *ngIf="!item.divider && !item.isCategory" md-menu-item [disabled]="item.disabled" [routerLink]="item.link" (click)="closeMenu()">
               <md-icon *ngIf="item.leftIcon">{{item.leftIcon}}</md-icon>
@@ -51,6 +45,7 @@
               <span *ngIf="item.extraText" class="menu-extra-text">{{item.extraText}}</span>
               <md-icon *ngIf="item.rightIcon">{{item.rightIcon}}</md-icon>
             </button>
+            <!-- </a> -->
             <md-divider *ngIf="item.divider" class="mat-divider"></md-divider>
           </ng-template>
         </ng-container>
@@ -77,19 +72,15 @@
         <md-divider *ngIf="item.divider" class="mat-divider"></md-divider>
       </ng-container>
       <ng-template #simpleTmpl>
-        <!-- <button *ngIf="!item.divider && !item.isCategory" md-menu-item [disabled]="item.disabled" [routerLink]="item.link"  (click)="closeMenu()">
-          <span>{{item.text}}</span>
-          <span *ngIf="item.extraText" class="menu-extra-text">{{item.extraText}}</span>
-        </button> -->
-        <!-- There are a few quirks using [routerLink] in our component (which is essentially a child component)
-            when it’s being delivered in current library format. Need to use href for it to work as Library dependency -->
-      <!--  <a href="#/{{item.link}}" *ngIf="!item.divider && !item.isCategory" md-menu-item [disabled]="item.disabled"  (click)="closeMenu()"> -->
+        <!-- If want to use as a Library Component - need to use href and useHash:true for it to work -->
+        <!--  <a href="#/{{item.link}}" *ngIf="!item.divider && !item.isCategory" md-menu-item [disabled]="item.disabled"  (click)="closeMenu()"> -->
         <button *ngIf="!item.divider && !item.isCategory" md-menu-item [disabled]="item.disabled" [routerLink]="item.link"  (click)="closeMenu()">
           <md-icon *ngIf="item.leftIcon">{{item.leftIcon}}</md-icon>
           <span>{{item.text}}</span>
           <span *ngIf="item.extraText" class="menu-extra-text">{{item.extraText}}</span>
           <md-icon *ngIf="item.rightIcon">{{item.rightIcon}}</md-icon>
         </button>
+        <!-- <a/> -->
         <md-divider *ngIf="item.divider" class="mat-divider"></md-divider>
       </ng-template>
     </ng-template>
