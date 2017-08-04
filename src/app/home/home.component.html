@@ -4,8 +4,9 @@
     <md-card-title>Layout: Slider Panel Open</md-card-title>
     <p><strong>The challenge we are facing: The toolbar with top menu is not fixed position</strong></p>
     <p>I have been able to make the sidenav right fixed position by applying class app-inner".
-    However, I have been unable to get both sidenav and toolbar to be fixed.<br/> I think the solution lies in [ngClass]
-    expression of some kind that toggles the app-inner class when sidenav is opened/closed.</p>
+      However, I have been unable to get both sidenav and toolbar to be fixed at the same time. It's either one or the other.</p>
+    <p>We can easily have top toolbar fixed - but not with the sidenav over the toolbar. In other words - sidenav would be in an 'over' mode but below the toolbar.</p>
+    <p><strong>Note: </strong>I'll continue to work on solution that allows for fixed sidenav and toolbar. But please have a try at doing this as well.</p>
 <pre>
 <strong>Markup for this basic layout</strong>
 &lt;md-sidenav-container class="sidenav-container backdrop-hidden app-inner">
