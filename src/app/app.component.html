@@ -14,33 +14,32 @@
 </md-sidenav-container>
 -->
 
-
-<md-sidenav-container class="sidenav-container backdrop-hidden app-inner">
+<md-toolbar color="default" class="secondary-header fixed-position">
+  <button md-raised-button color="primary" (click)="sidenav.toggle()">Toggle SideNav</button>
+  <app-nested-menu [color]="color" [items]="customItems"></app-nested-menu>
+</md-toolbar>
+<md-sidenav class="fixed-position" ngClass="{{sideWidth}}" #sidenav opened mode="over" align="end">
   <md-toolbar color="default" class="secondary-header">
-    <button md-raised-button color="primary" (click)="sidenav.toggle()">Toggle SideNav</button>
-    <app-nested-menu [color]="color" [items]="customItems"></app-nested-menu>
+    <button md-button color="primary" (click)="sidenav.toggle()">Close Sidenav</button>
   </md-toolbar>
-  <md-sidenav ngClass="{{sideWidth}}" #sidenav opened mode="over" align="end">
-    <md-toolbar color="default" class="secondary-header">
-      <button md-button color="primary" (click)="sidenav.toggle()">Close Sidenav</button>
-    </md-toolbar>
-    <div class="sidenav-select">
-      <md-select placeholder="Select side width" [(ngModel)]="sideWidth">
-        <md-option value="sm">Small</md-option>
-        <md-option value="med">Medium</md-option>
-        <md-option value="lg">Large</md-option>
-        <md-option value="xl">Full</md-option>
-      </md-select>
-      <br/>
-      <md-nav-list class="navigation">
-        <md-list-item *ngFor="let nav of navs"
-                      [routerLink]="nav.url"
-                      routerLinkActive="active"
-                      [routerLinkActiveOptions]="{exact:true}">
-          <a>{{nav.content}}</a></md-list-item>
-      </md-nav-list>
-    </div>
-  </md-sidenav>
+  <div class="sidenav-select">
+    <md-select placeholder="Select side width" [(ngModel)]="sideWidth">
+      <md-option value="sm">Small</md-option>
+      <md-option value="med">Medium</md-option>
+      <md-option value="lg">Large</md-option>
+      <md-option value="xl">Full</md-option>
+    </md-select>
+    <br/>
+    <md-nav-list class="navigation">
+      <md-list-item *ngFor="let nav of navs"
+                    [routerLink]="nav.url"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact:true}">
+        <a>{{nav.content}}</a></md-list-item>
+    </md-nav-list>
+  </div>
+</md-sidenav>
+<md-sidenav-container class="sidenav-container backdrop-hidden">
   <div class="sidenav-content">
    <router-outlet></router-outlet>
   </div>

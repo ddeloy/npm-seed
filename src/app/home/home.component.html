@@ -2,48 +2,44 @@
 <md-card>
   <md-card-content>
     <md-card-title>Layout: Slider Panel Open</md-card-title>
-    <p><strong>The challenge we are facing: The toolbar with top menu is not fixed position</strong></p>
-    <p>I have been able to make the sidenav right fixed position by applying class app-inner".
-      However, I have been unable to get both sidenav and toolbar to be fixed at the same time. It's either one or the other.</p>
-    <p>We can easily have top toolbar fixed - but not with the sidenav over the toolbar. In other words - sidenav would be in an 'over' mode but below the toolbar.</p>
-    <p><strong>Note: </strong>I'll continue to work on solution that allows for fixed sidenav and toolbar. But please have a try at doing this as well.</p>
+    <p>Toolbar and sidenav with fixed position. See comments below.</p>
 <pre>
 <strong>Markup for this basic layout</strong>
-&lt;md-sidenav-container class="sidenav-container backdrop-hidden app-inner">
-  &lt;!-- class: app-inner causes right sidenav to remain fixed on scroll -->
+&lt;md-toolbar color="default" class="secondary-header fixed-position">
+  &lt;button md-raised-button color="primary" (click)="sidenav.toggle()">Toggle SideNav&lt;/button>
+  &lt;app-nested-menu [color]="color" [items]="customItems">&lt;/app-nested-menu>
+&lt;/md-toolbar>
+&lt;md-sidenav class="fixed-position" ngClass="&#123;&#8203;&#123;sideWidth}&#8203;}" #sidenav opened mode="over" align="end">
   &lt;md-toolbar color="default" class="secondary-header">
-  &lt;!-- class: secondary-header is esssentially a duplication of main-header - but removes the box shadow -->
-    &lt;button md-raised-button color="primary" (click)="sidenav.toggle()">Toggle SideNav&lt;/button>
-    &lt;app-nested-menu [color]="color" [items]="customItems">&lt;/app-nested-menu>
+    &lt;button md-button color="primary" (click)="sidenav.toggle()">Close Sidenav&lt;/button>
   &lt;/md-toolbar>
-  &lt;md-sidenav ngClass="&#123;&#8203;&#123;sideWidth}&#8203;}" #sidenav opened mode="over" align="end">
-    &lt;md-toolbar color="default" class="secondary-header">
-      &lt;button md-button color="primary" (click)="sidenav.toggle()">Close Sidenav&lt;/button>
-    *lt;/md-toolbar>
-    &lt;div class="sidenav-select">
-      &lt;md-select placeholder="Select side width" [(ngModel)]="sideWidth">
-        &lt;md-option value="sm">Small&lt;/md-option>
-        &lt;md-option value="med">Medium&lt;/md-option>
-        &lt;md-option value="lg">Large&lt;/md-option>
-        &lt;md-option value="xl">Full&lt;/md-option>
-      &lt;/md-select>
-      &lt;br/>
-      &lt;md-nav-list class="navigation">
-        &lt;md-list-item *ngFor="let nav of navs"
-                      [routerLink]="nav.url"
-                      routerLinkActive="active"
-                      [routerLinkActiveOptions]="&#123;exact:true}">
-         &lt;a>&#123;&#8203;&#123;nav.content}&#8203;}&lt;/a>&lt;/md-list-item>
-      &lt;/md-nav-list>
-    &lt;/div>
-  &lt;/md-sidenav>
+  &lt;div class="sidenav-select">
+    &lt;md-select placeholder="Select side width" [(ngModel)]="sideWidth">
+      &lt;md-option value="sm">Small&lt;/md-option>
+      &lt;md-option value="med">Medium&lt;/md-option>
+      &lt;md-option value="lg">Large&lt;/md-option>
+      &lt;md-option value="xl">Full&lt;/md-option>
+    &lt;/md-select>
+    &lt;br/>
+    &lt;md-nav-list class="navigation">
+      &lt;md-list-item *ngFor="let nav of navs"
+                    [routerLink]="nav.url"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="&#123;exact:true}">
+        &lt;a>&#123;&#8203;&#123;nav.content}&#8203;}&lt;/a>&lt;/md-list-item>
+    &lt;/md-nav-list>
+  &lt;/div>
+&lt;/md-sidenav>
+&lt;md-sidenav-container class="sidenav-container backdrop-hidden">
   &lt;div class="sidenav-content">
-    &lt;router-outlet>&lt;/router-outlet>
+   &lt;router-outlet>&lt;/router-outlet>
   &lt;/div>
 &lt;/md-sidenav-container>
 </pre>
     <pre>
   <strong>The following classes can be found in the styles.scss:</strong>
+  Some are new and some override Library. You can add to your project temporarily - until I update the library.
+
   /* Similar to main-header - but box-shadow modified. This class is not in Library */
   md-toolbar.secondary-header &#123;
   padding: 0 8px;
@@ -51,15 +47,34 @@
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   z-index: 1;
   }
+
  /* Overrides class in Library - no border */
  .sidenav-container &#123;
   border: none;
   }
+
  /* This class is in Library - here I add some padding-right:10px */
  .sidenav-select &#123;
   margin-left: 15px;
   margin-top: 30px;
   padding-right:10px;
+  }
+
+  /* In this demo seed I have used namespace app-nested-menu insteqad of top-menu */
+  app-nested-menu &#123;
+  /* This class mimics top-menu from the Library and is exactly the same */
+  }
+
+ /* Wrapper class around router-outlet - provides necessary top padding to work with
+    the fixed positioning of toolbar and sidenav. Also provides some left, right bottom padding */
+ .sidenav-content &#123;
+  padding:75px 15px 15px 15px ;
+  }
+ /* This class exists in the Library - but I have modified padding-top */
+
+ /* New 'helper class' to easily add top top toolbar and md-sidnav to apply fixed positioning */
+ .fixed-position &#123;
+   position:fixed !important;
   }
     </pre>
   </md-card-content>
