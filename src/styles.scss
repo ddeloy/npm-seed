@@ -106,3 +106,19 @@ md-toolbar.secondary-header {
 .fixed-position {
   position:fixed !important;
 }
+
+.app-inner {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: calc(100vh - 64px);
+  display: -webkit-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
