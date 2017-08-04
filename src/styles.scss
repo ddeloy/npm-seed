@@ -75,3 +75,26 @@ app-nested-menu [md-button] {
   color: #fff;
 }
 
+md-toolbar.main-header {
+  padding: 0 8px;
+  position: relative;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+md-toolbar.secondary-header {
+  padding: 0 8px;
+  position: relative;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.sidenav-container {
+  border: none;
+}
+
+.sidenav-select {
+  margin-left: 15px;
+  margin-top: 30px;
+  padding-right:10px;
+}

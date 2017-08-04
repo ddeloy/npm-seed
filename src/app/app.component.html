@@ -1,3 +1,4 @@
+<!--
 <md-toolbar class="main-header" color="default"><app-nested-menu [color]="color" [items]="customItems"></app-nested-menu></md-toolbar>
 <md-sidenav-container class="app-inner">
   <md-sidenav #sidemenu class="sidebar-panel sidebar-menu-panel"  mode="side" opened>
@@ -11,4 +12,70 @@
  </md-sidenav>
   <router-outlet></router-outlet>
 </md-sidenav-container>
+-->
 
+
+<md-sidenav-container class="sidenav-container backdrop-hidden app-inner">
+  <md-toolbar color="default" class="secondary-header">
+    <button md-raised-button color="primary" (click)="sidenav.toggle()">Toggle SideNav</button>
+    <app-nested-menu [color]="color" [items]="customItems"></app-nested-menu>
+  </md-toolbar>
+  <md-sidenav ngClass="{{sideWidth}}" #sidenav opened mode="over" align="end">
+    <md-toolbar color="default" class="secondary-header">
+      <button md-button color="primary" (click)="sidenav.toggle()">Close Sidenav</button>
+    </md-toolbar>
+    <div class="sidenav-select">
+      <md-select placeholder="Select side width" [(ngModel)]="sideWidth">
+        <md-option value="sm">Small</md-option>
+        <md-option value="med">Medium</md-option>
+        <md-option value="lg">Large</md-option>
+        <md-option value="xl">Full</md-option>
+      </md-select>
+      <br/>
+      <md-nav-list class="navigation">
+        <md-list-item *ngFor="let nav of navs"
+                      [routerLink]="nav.url"
+                      routerLinkActive="active"
+                      [routerLinkActiveOptions]="{exact:true}">
+          <a>{{nav.content}}</a></md-list-item>
+      </md-nav-list>
+    </div>
+  </md-sidenav>
+  <div class="sidenav-content">
+   <router-outlet></router-outlet>
+  </div>
+</md-sidenav-container>
+
+
+
+<!--
+    <md-sidenav-container class="sidenav-container backdrop-hidden">
+      <md-toolbar color="default" class="main-header" >
+        <button md-raised-button color="accent" (click)="start2.toggle()">Toggle SideNav</button>
+        <app-nested-menu [color]="color" [items]="customItems"></app-nested-menu>
+      </md-toolbar>
+      <md-sidenav  ngClass="{{sideWidth}}" #start2 opened mode="over" align="end">
+        <md-toolbar>
+          <button md-button color="primary" (click)="start2.toggle()">Close Sidenav</button>
+        </md-toolbar>
+        <div class="sidenav-select" style="width:95%;">
+          <md-select placeholder="Select side width" [(ngModel)]="sideWidth">
+            <md-option value="sm">Small</md-option>
+            <md-option value="med">Medium</md-option>
+            <md-option value="lg">Large</md-option>
+            <md-option value="xl">Full</md-option>
+          </md-select>
+          <md-nav-list class="navigation">
+            <md-list-item *ngFor="let nav of navs"
+                          [routerLink]="nav.url"
+                          routerLinkActive="active"
+                          [routerLinkActiveOptions]="{exact:true}">
+              <a>{{nav.content}}</a></md-list-item>
+          </md-nav-list>
+        </div>
+      </md-sidenav>
+
+      <router-outlet></router-outlet>
+    </md-sidenav-container>
+
+-->
