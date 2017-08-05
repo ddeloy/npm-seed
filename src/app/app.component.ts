@@ -1,5 +1,7 @@
 import {Component, Input} from '@angular/core';
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,7 +16,7 @@ export class AppComponent {
     {url: 'wijmo', content: 'Wijmo'}
   ];
 
-  color = '';
+   color = '';
   /* Custom menu structure */
   customItems = [
     {

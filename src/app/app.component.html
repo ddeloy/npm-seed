@@ -1,18 +1,3 @@
-<!--
-<md-toolbar class="main-header" color="default"><app-nested-menu [color]="color" [items]="customItems"></app-nested-menu></md-toolbar>
-<md-sidenav-container class="app-inner">
-  <md-sidenav #sidemenu class="sidebar-panel sidebar-menu-panel"  mode="side" opened>
-    <md-nav-list class="navigation">
-      <md-list-item *ngFor="let nav of navs"
-                    [routerLink]="nav.url"
-                    routerLinkActive="active"
-                    [routerLinkActiveOptions]="{exact:true}">
-      <a>{{nav.content}}</a></md-list-item>
-    </md-nav-list>
- </md-sidenav>
-  <router-outlet></router-outlet>
-</md-sidenav-container>
--->
 
 <md-toolbar color="default" class="secondary-header fixed-position">
   <button md-raised-button color="primary" (click)="sidenav.toggle()">Toggle SideNav</button>
@@ -22,7 +7,7 @@
   <md-toolbar color="default" class="secondary-header">
     <button md-button color="primary" (click)="sidenav.toggle()">Close Sidenav</button>
   </md-toolbar>
-  <div class="sidenav-select">
+  <div class="sidenav-menu-select">
     <md-select placeholder="Select side width" [(ngModel)]="sideWidth">
       <md-option value="sm">Small</md-option>
       <md-option value="med">Medium</md-option>
@@ -39,8 +24,8 @@
     </md-nav-list>
   </div>
 </md-sidenav>
-<md-sidenav-container class="sidenav-container backdrop-hidden app-inner">
-  <div class="sidenav-content">
+<md-sidenav-container class="sidenav-right-container backdrop-hidden app-inner">
+  <div class="sidenav-right-content">
    <router-outlet></router-outlet>
   </div>
 </md-sidenav-container>
