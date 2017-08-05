@@ -15,9 +15,6 @@ import { DataSvc } from './services/DataSvc';
 import { NestedMenuComponent } from './custom/nested-menu.component';
 import { routing } from './app.routes';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
