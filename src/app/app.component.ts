@@ -11,7 +11,8 @@ export class AppComponent {
     {url: '', content: 'Home'},
     {url: 'basic', content: 'Basic'},
     {url: 'secondary', content: 'Secondary'},
-    {url: 'wijmo', content: 'Wijmo'}
+    {url: 'wijmotable', content: 'Wijmo Table'},
+    {url: 'wijmogrid', content: 'Wijmo Grid'}
   ];
 
    color = '';

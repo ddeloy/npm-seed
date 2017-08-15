@@ -14,6 +14,7 @@ import { WijmoTableComponent } from './wijmo/wijmo.table.component';
 import { DataSvc } from './services/DataSvc';
 import { NestedMenuComponent } from './custom/nested-menu.component';
 import { routing } from './app.routes';
+import { WijmoGridComponent } from './wijmo-grid/wijmo-grid.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { routing } from './app.routes';
     SecondaryComponent,
     OtherComponent,
     WijmoTableComponent,
-    NestedMenuComponent
+    NestedMenuComponent,
+    WijmoGridComponent
 
   ],
   imports: [

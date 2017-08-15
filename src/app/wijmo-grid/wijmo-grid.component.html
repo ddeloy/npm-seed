@@ -1,0 +1,213 @@
+<md-card>
+  <md-card-content>
+    <div class="mdl-cell mdl-cell--12-col">
+      <h3>Wijmo Angular Component Collection - Grids</h3>
+      <p><strong>Still work in progress. CSS still not 100% in place for the 'Filter Panels'. See links below:</strong></p>
+      <a href="http://ddeloy.com/flexgrid-ex-1/" target="_blank">Documentation - Basic</a><br/>
+      <a href="http://ddeloy.com/flexgrid-ex-filter-1/" target="_blank">Documentation - Filter Extension</a><br/>
+      <a href="http://wijmo.com/angular2/" target="_blank">Documentation: Wijmo FlexGrid Component Collection</a>
+      <h5>Wijmo Basic Grid:</h5>
+      <h5>This is most basic implementation - minimal confiuration required.</h5>
+      <p>No grid customization with reagrd to header, columns and cells. Wijmo does this automatically for you if these attributes are unspecified. <br/>
+        Templating can be used to customize header, columns and cells.</p>
+      <p><strong>Features below have been added</strong></p>
+      <ul>
+        <li>Column resizing</li>
+        <li>Selection mode - defined in ts file</li>
+        <li>Column reodering - drag and drop</li>
+        <li>isReadOnly - boolean</li>
+        <li>wj-flex-grid-filter extension must be added to component. Also need am element reference is ts.</li>
+        <li>Set the default filter type programatically.</li>
+        <li><strong>Note: See Custom Grid below for application of custom row and header heights. Below we have just applied Wijmo Default.</strong> </li>
+      </ul>
+      <pre>
+      <strong>TypeScript for Filters:</strong>
+      import * as wjcGridFilter from 'wijmo/wijmo.grid.filter'; // need this extra import for column filter panel
+
+      /* Child component that can be accessed in parent component */
+      @ViewChild('filters') filters: wjcGridFilter.FlexGridFilter;
+      </pre>
+      <pre>
+      <strong>Markup:</strong>
+      &lt;wj-flex-grid
+              [itemsSource]="cvTrackingChanges"
+              [allowResizing]="'Columns'"
+              [selectionMode]="selectionMode"
+              [isReadOnly]="true"
+              &lt;!-- Below attribute removes extra whitesapce to left of grid -->
+              [headersVisibility]="'Column'" >
+      &lt;!-- wj-flex-grid-filter adds advanced filtering to all columns -->
+      &lt;!-- #filters is reference to @ViewChild in ts file -->
+      &lt;wj-flex-grid-filter #filters
+              [defaultFilterType]="'Value'">
+              &lt;!-- Filter Type Options: "'Value'", "'Condition'", "'Both"', "'None"' -->
+      &lt;/wj-flex-grid-filter>
+      &lt;/wj-flex-grid>
+      </pre>
+      <wj-flex-grid #defaultheight
+                    [itemsSource]="cvTrackingChanges"
+                    [allowResizing]="'Columns'"
+                    [selectionMode]="selectionMode"
+                    [isReadOnly]="true"
+                    [headersVisibility]="'Column'"
+      >
+        <wj-flex-grid-filter #filters
+                             [defaultFilterType]="'Value'"
+
+        ></wj-flex-grid-filter>
+      </wj-flex-grid>
+      <br/>
+      <h5>Wijmo Custom Grid</h5>
+      <p><strong>Customization Options</strong></p>
+      <ul>
+        <li>Add custom header height and row height attributes to grid.</li>
+        <li>Columns are individually defined allowing for greater measure of customization.</li>
+        <li>Add ng-template cell template to columns allows for customization - like v-align and material design checkbox.</li>
+        <li>Can use ng-template in similar fashion for headers to apply more intricate customization. Dropdown menus, etc.</li>
+        <li><strong>Coming Soon:</strong> Hybrid Grid with majority of features supplied by default. Discrete application of ng-template as needed.</li>
+      </ul>
+      <pre>
+      <strong>Few extra lines of TypeScript to use custom row and header height</strong>
+      import * as wjcGridFilter from 'wijmo/wijmo.grid.filter'; // need this extra import for column filter panel
+      import * as wjGrid from 'wijmo/wijmo.grid'; // need this extra import in component using grid
+      import &#123;MdCheckboxModule} from '@angular/material'; // Material Checkbox is used below in the 'Active' column
+
+      /* Child component that can be accessed in parent component */
+       @ViewChild('filterscustom') filterscustom: wjcGridFilter.FlexGridFilter;
+
+      /* Set overrides for default header and row height - initialize as indicated below */
+      init(s: wjGrid.FlexGrid) &#123;
+         s.rows.defaultSize = 60
+         s.columnHeaders.rows.defaultSize = 40;
+      }
+
+      </pre>
+      <pre>
+      &lt;!-- #flexheight element ref used below to initialize custom header and row heights set in TS -->
+      &lt;!-- Just as we have ng-template option for column cells - we can use for headers to apply more intricate customization to headers. Dropdown menus, etc -->
+      &lt;wj-flex-grid #flexheight
+                      (initialized)="init(flexheight)"
+                      [itemsSource]="cvTrackingChangesExtra"
+                      [allowResizing]="'Columns'"
+                      [selectionMode]="selectionMode"
+                      [isReadOnly]="true"
+                      &lt;!-- Below attribute removes extra whitesapce to left of grid -->
+                      [headersVisibility]="'Column'" >
+
+        &lt;!-- #filterscustom is reference to @ViewChild in ts file -->
+        &lt;wj-flex-grid-filter #filtercustom>
+                   &lt;!-- Control which columns have filter -->
+                   [filterColumns]="['country','product','color']"
+                   [defaultFilterType]="'Value'">
+                   &lt;!-- Filter Type Options: "'Value'", "'Condition'", "'Both"', "'None"' -->
+        &lt;/wj-flex-grid-filter>
+        &lt;!-- See documentation for column width sizing options no [width] set and FlexGrid will auto apply -->
+        &lt;!-- [align] attribute can be set for each column - here I have explicitly set to center for id -->
+        &lt;wj-flex-grid-column [header]="'Id'" [binding]="'id'" [isReadOnly]="true" [align]="'center'">
+          &lt;ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+            &lt;!-- Class v-transform handles v-alignment of cells with custom height -->
+            &lt;!-- You can add event handlers or apply custom styling to a cell -->
+            &lt;div class="v-transform">
+              &#123;&#8203;&#123;cell.item.id}&#8203;}
+            &lt;/div>
+          &lt;/ng-template>
+        &lt;/wj-flex-grid-column>
+        &lt;wj-flex-grid-column [header]="'Country'" [binding]="'country'">
+          &lt;ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+            &lt;div class="v-transform">
+              &#123;&#8203;&#123;cell.item.country}&#8203;}
+            &lt;/div>
+          &lt;/ng-template>
+        &lt;/wj-flex-grid-column>
+        &lt;wj-flex-grid-column [header]="'Product'" [binding]="'product'">
+          &lt;ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+              &#123;&#8203;&#123;cell.item.product}&#8203;}
+            &lt;/div>
+          &lt;/ng-template>
+        &lt;/wj-flex-grid-column>
+        &lt;wj-flex-grid-column [header]="'Color'" [binding]="'color'">
+          &lt;ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+            &lt;div class="v-transform">
+              &#123;&#8203;&#123;cell.item.color}&#8203;}
+            &lt;/div>
+          &lt;/ng-template>
+        &lt;/wj-flex-grid-column>
+        &lt;wj-flex-grid-column [header]="'Revenue'" [binding]="'amount'" [format]="'n0'">
+           &lt;ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+            &lt;div class="v-transform">
+              &#123;&#8203;&#123;cell.item.amount | number}&#8203;}
+            &lt;/div>
+          &lt;/ng-template>
+        &lt;/wj-flex-grid-column>
+        &lt;wj-flex-grid-column [header]="'Active'" [binding]="'active'">
+         &lt;ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+           &lt;div class="v-transform">
+            &lt;!-- Cell template let's us use material design within grid -->
+              &lt;md-checkbox [(ngModel)]="cell.item.active">&lt;/md-checkbox>
+            &lt;/div>
+          &lt;/ng-template>
+        &lt;/wj-flex-grid-column>
+       &lt;/wj-flex-grid>
+      </pre>
+      <wj-flex-grid #flexheight [itemsSource]="cvTrackingChangesExtra"
+                    [allowResizing]="'Columns'"
+                    [selectionMode]="selectionMode"
+                    [isReadOnly]="true"
+                    (initialized)="init(flexheight)"
+                    [headersVisibility]="'Column'"
+
+      >
+        <!--  [defaultFilterType]="'Value'", "'Condition'", "'Both"', "'None"' -->
+        <wj-flex-grid-filter
+          [filterColumns]="['country','product','color']"
+          #filterscustom     [defaultFilterType]="'Value'"></wj-flex-grid-filter>
+        <wj-flex-grid-column [header]="'ID'" [binding]="'id'" [align]="'center'">
+          <ng-template  wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+            <div class="v-transform">
+              {{cell.item.id}}
+            </div>
+          </ng-template>
+        </wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Country'" [binding]="'country'" [isReadOnly]="true">
+          <ng-template  wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+            <div class="v-transform">
+              {{cell.item.country}}
+            </div>
+          </ng-template>
+        </wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Product'" [binding]="'product'">
+          <ng-template  wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+            <div class="v-transform">
+              {{cell.item.product}}
+            </div>
+          </ng-template>
+        </wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Color'" [binding]="'color'">
+          <ng-template  wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+            <div class="v-transform">
+              {{cell.item.color}}
+            </div>
+          </ng-template>
+        </wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Revenue'" [binding]="'amount'" [format]="'n0'">
+          <ng-template  wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+            <div class="v-transform">
+              {{cell.item.amount | number}}
+            </div>
+          </ng-template>
+        </wj-flex-grid-column>
+        <!-- [width]="'*'" -->
+        <wj-flex-grid-column [header]="'Active'"   [binding]="'active'">
+          <ng-template  wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+            <div class="v-transform">
+              <!--  <input type="checkbox" [(ngModel)]="cell.item.active"> -->
+              <md-checkbox class="example-margin" [(ngModel)]="cell.item.active"></md-checkbox>
+
+            </div>
+          </ng-template>
+        </wj-flex-grid-column>
+      </wj-flex-grid>
+    </div>
+  </md-card-content>
+</md-card>
+
