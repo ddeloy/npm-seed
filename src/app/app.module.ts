@@ -15,6 +15,7 @@ import { DataSvc } from './services/DataSvc';
 import { NestedMenuComponent } from './custom/nested-menu.component';
 import { routing } from './app.routes';
 import { WijmoGridComponent } from './wijmo-grid/wijmo-grid.component';
+import {OptFilterPipe, SelectCustomComponent} from './select-custom/select-custom.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { WijmoGridComponent } from './wijmo-grid/wijmo-grid.component';
     OtherComponent,
     WijmoTableComponent,
     NestedMenuComponent,
-    WijmoGridComponent
+    WijmoGridComponent,
+    SelectCustomComponent,
+    OptFilterPipe
 
   ],
   imports: [

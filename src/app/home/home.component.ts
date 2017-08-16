@@ -99,8 +99,13 @@ export class HomeComponent implements OnInit {
           divider: true
         },
         {
-          text: 'Wijmo',
-          link: 'wijmo'
+          text: 'Wijmo Table',
+          link: 'wijmotable'
+          // could show keyboard command - or whatever we want extraText: 'Ctrl+O'
+        },
+        {
+          text: 'Wijmo Grid',
+          link: 'wijmogrid'
           // could show keyboard command - or whatever we want extraText: 'Ctrl+O'
         },
         {
