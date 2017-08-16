@@ -29,8 +29,8 @@ export class OptFilterPipe implements PipeTransform {
       <md-card-title>Select</md-card-title>
       <md-card-subtitle>Custom MultiSelect</md-card-subtitle>
       <md-card-content>
-        <p>Download sample component with inline template: select-custom.component.ts</p>
-        <a md-raised-button color="primary" href="http://ddeloy.com/itn-library-downlaods/select-custom.zip" download>Download Zip</a>
+      <!--  <p>Download sample component with inline template: select-custom.component.ts</p>
+        <a md-raised-button color="primary" href="http://ddeloy.com/itn-library-downlaods/select-custom.zip" download>Download Zip</a> -->
         <div fxLayout="row" fxLayoutWrap="wrap">
           <div fxFlex.gt-sm="50" fxFlex.gt-xs="75" fxFlex="100">
             <label class="select-popover">
