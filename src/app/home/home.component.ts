@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SidenavMenuItem } from '@ddeloy/dd-library';
+import { SidenavMenuItem } from '@itradenetwork/itnlibrary';
 
 @Component({
   selector: 'app-home',

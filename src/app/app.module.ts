@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule} from '@angular/core';
 import { AppComponent } from './app.component';
-import { LibraryModule, WijmoTableModule } from '@ddeloy/dd-library';
+import { LibraryModule, WijmoTableModule } from '@itradenetwork/itnlibrary';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
