@@ -19,8 +19,18 @@ export class AppComponent {
   /* Custom menu structure */
   customItems = [
     {
-      text: 'Orders',
+      text: 'Customers',
       items: [
+        {
+          text: 'Customers',
+          link: '/customers',
+          extraText: 'Ctrl+O'
+        },
+        {
+          text: 'Orders',
+          link: '/orders/completed',
+          extraText: 'Ctrl+O'
+        },
         {
           text: 'Basic',
           link: 'basic',

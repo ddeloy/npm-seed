@@ -16,6 +16,8 @@ import { NestedMenuComponent } from './custom/nested-menu.component';
 import { routing } from './app.routes';
 import { WijmoGridComponent } from './wijmo-grid/wijmo-grid.component';
 import {OptFilterPipe, SelectCustomComponent} from './select-custom/select-custom.component';
+import {OrdersModule} from './orders/orders.module';
+import {CustomersModule} from './customers/customers.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import {OptFilterPipe, SelectCustomComponent} from './select-custom/select-custo
     CommonModule,
     FormsModule,
     WijmoTableModule,
+    OrdersModule,
+    CustomersModule,
     routing
   ],
   providers: [DataSvc],

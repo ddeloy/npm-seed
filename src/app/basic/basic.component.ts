@@ -8,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasicComponent implements OnInit {
 
+  model = {'id': 18,
+    'name': 'Dr IQ'
+  };
+
   constructor() { }
 
   ngOnInit() {

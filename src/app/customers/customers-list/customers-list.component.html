@@ -1,0 +1,22 @@
+<h4>
+  Customers List
+</h4>
+<p>Demonstrates a simple service within nested router-outlet. Displays in a completely unstyled table.</p>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Firstname&nbsp;&nbsp;</th>
+        <th>Lastname&nbsp;&nbsp;</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of customers">
+        <td>{{customer.firstName}}</td>
+        <td>{{customer.lastName}}</td>
+        <td>{{customer.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+

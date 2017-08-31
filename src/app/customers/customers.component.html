@@ -1,0 +1,51 @@
+<!--<h2>Manage Customers</h2>
+<ul class="nav nav-tabs">
+  <li role="presentation" routerLinkActive="active"><a href="javascript:void(0);" routerLink='/customers/list'>Customers List</a></li>
+  <li role="presentation" routerLinkActive="active"><a href="javascript:void(0);" routerLink='/customers/prospects'>Prospect Customers</a></li>
+  <li role="presentation" routerLinkActive="active"><a href="javascript:void(0);" routerLink='/customers/inquiries'>Inquiries</a></li>
+</ul>
+<div>
+  <router-outlet></router-outlet>
+</div>
+-->
+<md-sidenav-container class="app-inner">
+  <md-sidenav #sidemenu class="sidebar-panel" mode="side" id="sidebar-panel" opened align="start">
+    <md-nav-list class="navigation">
+
+      <md-list-item>
+        <a href="javascript:void(0);" routerLink='/customers/list'> <md-icon>equalizer</md-icon>Customers List</a>
+      </md-list-item>
+      <md-list-item>
+        <a href="javascript:void(0);" routerLink='/customers/prospects'><md-icon>face</md-icon>Prospect Customers</a>
+      </md-list-item>
+
+      <md-list-item>
+
+        <a href="javascript:void(0);" routerLink='/customers/inquiries'><md-icon>pages</md-icon>Inquiries</a>
+
+      </md-list-item>
+    </md-nav-list>
+  </md-sidenav>
+  <md-card>
+    <md-card-content>
+      <router-outlet></router-outlet>
+    </md-card-content>
+  </md-card>
+</md-sidenav-container>
+<!--
+<h2>Manage Customers</h2>
+<div class="row">
+  <div class="col-md-2" style="min-height: 400px; border-right: 1px solid black">
+    <ul class="nav nav-pills nav-stacked">
+      <li role="presentation" routerLinkActive="active"><a href="javascript:void(0);" routerLink='/customers/list'>Customers List</a></li>
+      <li role="presentation" routerLinkActive="active"><a href="javascript:void(0);" routerLink='/customers/prospects'>Prospect Customers</a></li>
+      <li role="presentation" routerLinkActive="active"><a href="javascript:void(0);" routerLink='/customers/inquiries'>Inquiries</a></li>
+    </ul>
+  </div>
+  <div class="col-md-10">
+    <router-outlet>
+
+    </router-outlet>
+  </div>
+</div>
+-->
