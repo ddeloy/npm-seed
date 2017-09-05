@@ -4,7 +4,10 @@ import * as wjGrid from 'wijmo/wijmo.grid';
 
 // Angular
 // Angular
-import {Component, EventEmitter, Provider, Input, Inject, enableProdMode, NgModule, ViewChild} from '@angular/core';
+import {
+  Component, EventEmitter, Provider, Input, Inject, enableProdMode, NgModule, ViewChild,
+  OnInit
+} from '@angular/core';
 import { DataSvc } from '../services/DataSvc';
 
 // The feature component.
@@ -13,7 +16,7 @@ import { DataSvc } from '../services/DataSvc';
   templateUrl: 'wijmo-grid.component.html'
 })
 
-export class WijmoGridComponent {
+export class WijmoGridComponent implements OnInit {
 
   cvGettingStarted: wjcCore.CollectionView;
   cvCRM: wjcCore.CollectionView;
@@ -44,12 +47,106 @@ export class WijmoGridComponent {
 
   @ViewChild('filters') filters: wjcGridFilter.FlexGridFilter;
   @ViewChild('filterscustom') filterscustom: wjcGridFilter.FlexGridFilter;
+  /* Use ViewChild to acces header checkbox */
+  @ViewChild('flexheight') flexheight: any;
 
-  /* Se overrides for default header and row height - initialize as indicated below */
+  /* Set overrides for default header and row height - initialize as indicated below */
   init(s: wjGrid.FlexGrid) {
     s.rows.defaultSize = 60
     s.columnHeaders.rows.defaultSize = 40;
   }
+  /*  Only use the ngOnInit() code below if grid has ‘grouping’ and header row with checkbox */
+  ngOnInit() {
+    this.flexheight.hostElement.addEventListener('click', (e: any) => {
+      // handle click event for group row  checkbox and change child rows state
+      if (wjcCore.hasClass(e.target, 'custom-check-box')) {
+        const groupData = this.flexheight.rows[this.flexheight.selection.row].dataItem;
+        for (let i = 0; i < groupData.items.length; i++) {
+          this.flexheight.beginUpdate();
+          // (flex.selection.row+1) is added in i for getting row index
+          //  5 is column index for Boolean value
+          this.flexheight.setCellData(i + this.flexheight.selection.row + 1, 5, e.target.checked);
+          this.flexheight.endUpdate();
+        }
+      }
+    }, true );
+  }
+
+  /* Programmatically create checkbox and select/dropdown on active row header */
+  formatItem(flexheight: wjGrid.FlexGrid, e: wjGrid.FormatItemEventArgs) {
+    // add/ handle check box in columnheader
+    if (e.panel.cellType === wjGrid.CellType.ColumnHeader) {
+      const col = flexheight.columns[e.col];
+      let cnt = 0; // get active entry in data
+      if (col.dataType === wjcCore.DataType.Boolean) {
+        for (let i = 0; i < flexheight.rows.length; i++) {
+          // exlude group row
+          if (!this.flexheight.rows[i].hasChildren){
+            if (flexheight.getCellData(i, e.col, false)) {
+              cnt++;
+            }
+          }
+        }
+        // add check box in Column Header
+        //   e.cell.innerHTML = '<input type="checkbox">'  + e.cell.innerText;
+        e.cell.innerHTML = `<input type="checkbox"> <select style="font-size:12px;font-weight:normal;cursor:pointer;" type="select">
+        <option style="font-size:12px;font-weight:normal;cursor:pointer;">Actions</option>
+        <option>Cancel</option><option>Change</option><option>Export</option><option>Add</option>
+        </select>`
+        const cb = <HTMLInputElement>e.cell.firstChild,
+          checked = cnt > 0,
+          intermediate = cnt > 0 && cnt < this.flexheight.collectionView.items.length;
+        cb.checked = checked || intermediate;
+        cb.indeterminate = intermediate;
+        cb.addEventListener('click', () => {
+          this.cvTrackingChangesExtra.commitEdit();
+          this.flexheight.beginUpdate();
+          for (let i = 0; i < this.flexheight.rows.length; i++) {
+            // exclude groupRow
+            if (!this.flexheight.rows[i].hasChildren) {
+              this.flexheight.setCellData(i, col.index, cb.checked || intermediate);
+            }
+          }
+          this.flexheight.endUpdate();
+        });
+        // change intermediate state
+        cb.addEventListener('mousedown', () => {
+          setTimeout(() => {
+            if (cb.indeterminate) {
+              cb.click();
+            }
+          });
+        });
+      }
+    }
+    if (e.panel === flexheight.cells && flexheight.columns[e.col].binding === 'active') {
+      // add custom css for selected rows
+      const row = flexheight.rows[e.row];
+      if (row.dataItem.active) {
+        row.cssClass = 'select';
+      } else { row.cssClass = 'deselect';
+      }
+    }
+    // add/handle check box for grouped rows
+    if (e.panel.rows[e.row] instanceof wjGrid.GroupRow && e.panel.cellType != wjGrid.CellType.RowHeader) {
+      const chk = document.createElement('input');
+      chk.type = 'checkbox';
+      chk.style.marginLeft = '6px';
+      chk.className = 'custom-check-box';
+      const groupData = e.panel.rows[e.row].dataItem;
+      let cnt = 0;
+      for (let i = 0; i < groupData.items.length; i++) {
+        if (groupData.items[i].active === true) {
+          cnt++;
+        }
+      }
+      chk.checked = cnt > 0;
+      chk.indeterminate = cnt > 0 && cnt < groupData.items.length;
+      e.cell.appendChild(chk);
+    }
+
+  }
+
 
   constructor( @Inject(DataSvc) dataSvc: DataSvc) {
     // initialize the collectionview

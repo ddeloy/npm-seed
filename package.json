@@ -23,7 +23,7 @@
     "@angular/platform-browser": "^4.3.6",
     "@angular/platform-browser-dynamic": "^4.3.6",
     "@angular/router": "^4.3.6",
-    "@itradenetwork/itnlibrary": "^1.1.52",
+    "@itradenetwork/itnlibrary": "^1.1.53",
     "@types/node": "^6.0.88",
     "core-js": "^2.5.1",
     "karma": "^1.7.1",

@@ -154,6 +154,7 @@
                     [isReadOnly]="true"
                     (initialized)="init(flexheight)"
                     [headersVisibility]="'Column'"
+                    (formatItem)="formatItem(flexheight,$event)"
 
       >
         <!--  [defaultFilterType]="'Value'", "'Condition'", "'Both"', "'None"' -->
