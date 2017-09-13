@@ -18,6 +18,7 @@ import { WijmoGridComponent } from './wijmo-grid/wijmo-grid.component';
 import {OptFilterPipe, SelectCustomComponent} from './select-custom/select-custom.component';
 import {OrdersModule} from './orders/orders.module';
 import {CustomersModule} from './customers/customers.module';
+import {PortalComponent, ScienceJoke} from './portal/portal.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import {CustomersModule} from './customers/customers.module';
     NestedMenuComponent,
     WijmoGridComponent,
     SelectCustomComponent,
-    OptFilterPipe
+    OptFilterPipe,
+    PortalComponent,
+    ScienceJoke
 
   ],
   imports: [
@@ -42,9 +45,10 @@ import {CustomersModule} from './customers/customers.module';
     WijmoTableModule,
     OrdersModule,
     CustomersModule,
-    routing
+    routing,
   ],
   providers: [DataSvc],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ ScienceJoke ],
 })
 export class AppModule { }

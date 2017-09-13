@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 
 @Component({
-  selector: 'app-dialog-inquiries',
-  templateUrl: './inquiries.component.html'
+  selector: 'app-dialog-requests',
+  templateUrl: './requests.component.html'
 })
-export class DialogInquiriesComponent {
-  dialogRef: MdDialogRef<InquiriesDialogComponent>;
+export class DialogRequestsComponent {
+  dialogRef: MdDialogRef<RequestsDialogComponent>;
   lastCloseResult: string;
   config: MdDialogConfig = {
     disableClose: true,
@@ -21,8 +21,8 @@ export class DialogInquiriesComponent {
     }
   };
   constructor(public dialog: MdDialog) {}
-  openInquiries() {
-    this.dialogRef = this.dialog.open(InquiriesDialogComponent, this.config);
+  openRequests() {
+    this.dialogRef = this.dialog.open(RequestsDialogComponent, this.config);
     this.dialogRef.afterClosed().subscribe(result => {
       this.lastCloseResult = result;
       this.dialogRef = null;
@@ -31,11 +31,11 @@ export class DialogInquiriesComponent {
 }
 
 @Component({
-  selector: 'app-inquiries-dialog',
+  selector: 'app-requests-dialog',
   styles: [``],
   template: `
-    <h2 md-dialog-title>I am the inquiries dialog</h2>
-    <md-dialog-content>My configuration options are preset
+    <h2 md-dialog-title>I am the Requests Dialog</h2>
+    <md-dialog-content>My event handler is inside the router-outlet for the customer.component layout
       <ul>
         <li>Width:75%</li>
         <li>Height: 100%</li>
@@ -49,7 +49,7 @@ export class DialogInquiriesComponent {
     </md-dialog-actions>
   `
 })
-export class InquiriesDialogComponent {
+export class RequestsDialogComponent {
   customMessage = 'I can be passed into the modal with custom content';
-  constructor(public dialogRef: MdDialogRef <InquiriesDialogComponent> ) {}
+  constructor(public dialogRef: MdDialogRef <RequestsDialogComponent> ) {}
 }

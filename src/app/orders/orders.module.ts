@@ -6,6 +6,8 @@ import { CompletedOrdersComponent } from './completed-orders/completed-orders.co
 import { InProgressOrdersComponent } from './in-progress-orders/in-progress-orders.component';
 import { OrdersService } from './orders.service';
 import { MaterialModule } from '@angular/material';
+import {DialogRejectsComponent, RejectsDialogComponent} from './rejects/rejects.component';
+import {CancelsDialogComponent, DialogCancelsComponent} from './cancels/cancels.component';
 const manageChecklistRoutes = [
   {
     path: 'orders',
@@ -23,6 +25,14 @@ const manageChecklistRoutes = [
       {
         path: 'inprogress',
         component: InProgressOrdersComponent
+      },
+      {
+        path: 'rejects',
+        component: DialogRejectsComponent
+      },
+      {
+        path: 'cancels',
+        component: DialogCancelsComponent
       }
     ]
   }
@@ -34,9 +44,11 @@ const manageChecklistRoutes = [
     RouterModule.forChild(manageChecklistRoutes),
     MaterialModule
   ],
-  declarations: [OrdersComponent, CompletedOrdersComponent, InProgressOrdersComponent],
-  providers:[
+  declarations: [OrdersComponent, CompletedOrdersComponent, InProgressOrdersComponent, CancelsDialogComponent, DialogCancelsComponent,
+    RejectsDialogComponent, DialogRejectsComponent],
+  providers: [
     OrdersService
-  ]
+  ],
+  entryComponents: [ CancelsDialogComponent, RejectsDialogComponent ],
 })
 export class OrdersModule { }

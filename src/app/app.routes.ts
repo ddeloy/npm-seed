@@ -10,6 +10,7 @@ import { CustomersModule } from './customers/customers.module';
 import { OrdersModule } from './orders/orders.module';
 import { CustomersComponent } from './customers/customers.component';
 import { OrdersComponent } from './orders/orders.component';
+import {PortalComponent} from "./portal/portal.component";
 
 const APP_ROUTES = [
   {
@@ -32,6 +33,7 @@ const APP_ROUTES = [
   {path: 'wijmotable', component: WijmoTableComponent},
   {path: 'wijmogrid', component: WijmoGridComponent},
   {path: 'selectcustom', component: SelectCustomComponent},
+  {path: 'portal', component: PortalComponent},
 ]
 
  export const routing = RouterModule.forRoot(APP_ROUTES);

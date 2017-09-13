@@ -12,7 +12,7 @@ export class CustomersListComponent implements OnInit {
 
   ngOnInit() {
     this.getCustomers();
-    console.log("Getting projects");
+    console.log('Getting projects');
   }
 
   getCustomers() {

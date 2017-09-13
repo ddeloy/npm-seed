@@ -1,9 +1,30 @@
+<app-dialog-inquiries></app-dialog-inquiries>
 <h4>
   Customers List
 </h4>
-<p><strong>Note: </strong>Initial slide in animation of router-outlet content can be eliminated if desired.</p>
-<p>Demonstrates a simple service within nested router-outlet. Displays in a completely unstyled table.</p>
-
+<p>In this implementation - the dialog is included as a selector in the nested view.<br/>
+We can, however, have the dialog selector 'outside' of the router-outlet and trigger it's display using *ngIf logic.</p>
+<pre>
+  <strong>The layout in the customer.component.html </strong>
+  &lt;md-sidenav-container class="app-inner">
+  &lt;md-sidenav #sidemenu class="sidebar-panel" mode="side" id="sidebar-panel" opened align="start">
+    &lt;md-nav-list class="navigation">
+      &lt;md-list-item> &lt;a href="javascript:void(0);" routerLink='/customers/list'>
+        &lt;md-icon>equalizer&lt;/md-icon>
+        Customers List&lt;/a>&lt;/md-list-item>
+      &lt;md-list-item> &lt;a href="javascript:void(0);" routerLink='/customers/prospects'>
+        &lt;md-icon>face&lt;/md-icon>
+        Prospect Customers&lt;/a> &lt;/md-list-item>
+    &lt;/md-nav-list>
+  &lt;/md-sidenav>
+  &lt;div style="padding:10px;">
+    <strong>dialog selectors could be displayed outside of the router-outlet.
+    Router links would have (click) event that shows the appropriate dialog trigger based ont the view.</strong>
+    &lt;router-outlet> &lt;/router-outlet>
+  &lt;/div>
+&lt;/md-sidenav-container>
+</pre>
+<p><strong>Below: A simple service within nested router-outlet. Displays in a completely unstyled table.</strong></p>
   <table class="table table-hover">
     <thead>
       <tr>

@@ -6,13 +6,14 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @Input() sideWidth = 'sm';
+   @Input() sideWidth = 'sm';
   navs = [
     {url: '', content: 'Home'},
     {url: 'basic', content: 'Basic'},
     {url: 'secondary', content: 'Secondary'},
     {url: 'wijmotable', content: 'Wijmo Table'},
-    {url: 'wijmogrid', content: 'Wijmo Grid'}
+    {url: 'wijmogrid', content: 'Wijmo Grid'},
+    {url: 'portal', content: 'Portal Demo'}
   ];
 
    color = '';
@@ -238,6 +239,5 @@ export class AppComponent {
     },
 
   ];
-
 
 }

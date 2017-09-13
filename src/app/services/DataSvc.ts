@@ -45,7 +45,7 @@ export class DataSvc {
   }
 
   getNames(): string[] {
-    return ['id', 'start', 'end', 'country', 'product', 'color', 'amount', 'active'];
+    return ['id', 'start', 'end', 'country', 'product', 'color', 'amount', 'active', 'elected'];
   }
 }
 

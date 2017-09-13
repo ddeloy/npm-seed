@@ -81,7 +81,7 @@ export class WijmoGridComponent implements OnInit {
       if (col.dataType === wjcCore.DataType.Boolean) {
         for (let i = 0; i < flexheight.rows.length; i++) {
           // exlude group row
-          if (!this.flexheight.rows[i].hasChildren){
+          if (!this.flexheight.rows[i].hasChildren) {
             if (flexheight.getCellData(i, e.col, false)) {
               cnt++;
             }
@@ -89,10 +89,11 @@ export class WijmoGridComponent implements OnInit {
         }
         // add check box in Column Header
         //   e.cell.innerHTML = '<input type="checkbox">'  + e.cell.innerText;
-        e.cell.innerHTML = `<input type="checkbox"> <select style="font-size:12px;font-weight:normal;cursor:pointer;" type="select">
+        e.cell.innerHTML = `<input type="checkbox">
+<!-- <select style="font-size:12px;font-weight:normal;cursor:pointer;" type="select">
         <option style="font-size:12px;font-weight:normal;cursor:pointer;">Actions</option>
         <option>Cancel</option><option>Change</option><option>Export</option><option>Add</option>
-        </select>`
+        </select>-->`
         const cb = <HTMLInputElement>e.cell.firstChild,
           checked = cnt > 0,
           intermediate = cnt > 0 && cnt < this.flexheight.collectionView.items.length;
@@ -128,7 +129,7 @@ export class WijmoGridComponent implements OnInit {
       }
     }
     // add/handle check box for grouped rows
-    if (e.panel.rows[e.row] instanceof wjGrid.GroupRow && e.panel.cellType != wjGrid.CellType.RowHeader) {
+  /*  if (e.panel.rows[e.row] instanceof wjGrid.GroupRow && e.panel.cellType != wjGrid.CellType.RowHeader) {
       const chk = document.createElement('input');
       chk.type = 'checkbox';
       chk.style.marginLeft = '6px';
@@ -143,7 +144,7 @@ export class WijmoGridComponent implements OnInit {
       chk.checked = cnt > 0;
       chk.indeterminate = cnt > 0 && cnt < groupData.items.length;
       e.cell.appendChild(chk);
-    }
+    }*/
 
   }
 

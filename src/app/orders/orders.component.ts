@@ -5,6 +5,16 @@ import { RouterModule, Route } from '@angular/router';
   templateUrl: './orders.component.html'
 })
 export class OrdersComponent implements OnInit {
+  cancelsDialog = true;
+  rejectsDialog = false;
+  showAppDialog() {
+    this.rejectsDialog = true;
+    this.cancelsDialog = false;
+  }
+  hideAppDialog() {
+    this.rejectsDialog = false;
+    this.cancelsDialog = true;
+  }
 
   constructor() { }
 

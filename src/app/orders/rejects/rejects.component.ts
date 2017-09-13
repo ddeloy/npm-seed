@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 
 @Component({
-  selector: 'app-dialog-inquiries',
-  templateUrl: './inquiries.component.html'
+  selector: 'app-dialog-rejects',
+  templateUrl: './rejects.component.html'
 })
-export class DialogInquiriesComponent {
-  dialogRef: MdDialogRef<InquiriesDialogComponent>;
+export class DialogRejectsComponent {
+  dialogRef: MdDialogRef<RejectsDialogComponent>;
   lastCloseResult: string;
   config: MdDialogConfig = {
     disableClose: true,
@@ -21,8 +21,8 @@ export class DialogInquiriesComponent {
     }
   };
   constructor(public dialog: MdDialog) {}
-  openInquiries() {
-    this.dialogRef = this.dialog.open(InquiriesDialogComponent, this.config);
+  openRejects() {
+    this.dialogRef = this.dialog.open(RejectsDialogComponent, this.config);
     this.dialogRef.afterClosed().subscribe(result => {
       this.lastCloseResult = result;
       this.dialogRef = null;
@@ -31,10 +31,10 @@ export class DialogInquiriesComponent {
 }
 
 @Component({
-  selector: 'app-inquiries-dialog',
+  selector: 'app-rejects-dialog',
   styles: [``],
   template: `
-    <h2 md-dialog-title>I am the inquiries dialog</h2>
+    <h2 md-dialog-title>I am the Rejects Dialog</h2>
     <md-dialog-content>My configuration options are preset
       <ul>
         <li>Width:75%</li>
@@ -49,7 +49,7 @@ export class DialogInquiriesComponent {
     </md-dialog-actions>
   `
 })
-export class InquiriesDialogComponent {
+export class RejectsDialogComponent {
   customMessage = 'I can be passed into the modal with custom content';
-  constructor(public dialogRef: MdDialogRef <InquiriesDialogComponent> ) {}
+  constructor(public dialogRef: MdDialogRef <RejectsDialogComponent> ) {}
 }

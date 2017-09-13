@@ -4,9 +4,10 @@ import { RouterModule, Route } from '@angular/router';
 import { CustomersComponent } from './customers.component';
 import { CustomersListComponent } from './customers-list/customers-list.component';
 import { ProspectsComponent } from './prospects/prospects.component';
-import { InquiriesComponent } from './inquiries/inquiries.component';
+import { InquiriesDialogComponent, DialogInquiriesComponent } from './inquiries/inquiries.component';
 import { CustomersService } from './customers.service';
 import { MaterialModule } from '@angular/material';
+import {DialogRequestsComponent, RequestsDialogComponent} from './requests/requests.component';
 const customersRoutes = [
   {
     path: 'customers',
@@ -27,7 +28,11 @@ const customersRoutes = [
       },
       {
         path: 'inquiries',
-        component: InquiriesComponent
+        component: DialogInquiriesComponent
+      },
+      {
+        path: 'requests',
+        component: DialogRequestsComponent
       }
     ]
   }
@@ -38,7 +43,9 @@ const customersRoutes = [
     RouterModule.forChild(customersRoutes),
     MaterialModule
   ],
-  declarations: [CustomersComponent, CustomersListComponent, ProspectsComponent, InquiriesComponent],
-  providers: [CustomersService]
+  declarations: [CustomersComponent, CustomersListComponent, ProspectsComponent,  InquiriesDialogComponent, DialogInquiriesComponent,
+    RequestsDialogComponent, DialogRequestsComponent],
+  providers: [CustomersService],
+  entryComponents: [ InquiriesDialogComponent, RequestsDialogComponent ],
 })
 export class CustomersModule { }

@@ -1,0 +1,36 @@
+<h4>Portals</h4>
+<p>A Portal is a piece of UI that can be dynamically rendered to an open slot on the page.<br/>
+  The "piece of UI" can be either a Component or a TemplateRef and the "open slot" is a PortalHost.<br/>
+  Portals and PortalHosts are low-level building blocks that other concepts, such as overlays, are built upon.</p>
+<p>Learn more here: <a href="https://github.com/angular/material2/blob/master/src/cdk/portal/portal.md" target="_blank">https://github.com/angular/material2/blob/master/src/cdk/portal/portal.md</a></p>
+<h5> The portal host is here: </h5>
+<div class="demo-portal-host">
+  <ng-template [cdkPortalHost]="selectedPortal"></ng-template>
+</div>
+
+<button md-raised-button color="accent" (click)="selectedPortal = programmingJoke">
+  Programming joke
+</button>
+
+<button md-raised-button color="accent" (click)="selectedPortal = mathJoke">
+  Math joke
+</button>
+
+<button md-raised-button color="accent" (click)="selectedPortal = scienceJoke">
+  Science joke
+</button>
+
+<!-- Template vars on <ng-template> elements can't be accessed _in_ the template because Angular
+    doesn't support grabbing the instance / TemplateRef this way because the variable may be
+    referring to something *in* the template (such as #item in ngFor). As such, the component
+    has to use @ViewChild / @ViewChildren to get these references.
+    See https://github.com/angular/angular/issues/7158 -->
+<ng-template cdk-portal>
+  <p> - Why don't jokes work in octal?</p>
+  <p> - Because 7 10 11.</p>
+</ng-template>
+
+<div *cdk-portal>
+  <p> - Did you hear about this year's Fibonacci Conference? </p>
+  <p> - It's going to be as big as the last two put together. </p>
+</div>

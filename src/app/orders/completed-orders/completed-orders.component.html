@@ -1,7 +1,30 @@
 
 
 <h4>Completed Orders</h4>
-<p>Demonstrates a simple service within nested router-outlet. Displays in a completely unstyled table.</p>
+<p>In this implementation the dialog selector is 'outside' of the nested router-outlet. <br/>
+*ngIf logic is used to determine which dialog selector tod display based on the selected route.</p>
+<pre>
+  <strong>The layout in the order.component.html </strong>
+  &lt;md-sidenav-container class="app-inner">
+  &lt;md-sidenav #sidemenu class="sidebar-panel" mode="side" id="sidebar-panel" opened align="start">
+    &lt;md-nav-list class="navigation">
+      &lt;md-list-item> &lt;a (click)="hideAppDialog()" href="javascript:void(0);" routerLink='/orders/completed'>
+        &lt;md-icon>equalizer&lt;/md-icon>
+        Completed Orders&lt;/a> &lt;/md-list-item>
+      &lt;md-list-item> &lt;a (click)="showAppDialog()" href="javascript:void(0);" routerLink='/orders/inprogress'>
+        &lt;md-icon>face&lt;/md-icon>
+        In Progress&lt;/a> &lt;/md-list-item>
+    &lt;/md-nav-list>
+  &lt;/md-sidenav>
+  &lt;div style="padding:10px;">
+    <strong>dialog selectors are conditionally displayed outside of the nested router-outlet.</strong>
+    &lt;app-dialog-cancels *ngIf="cancelsDialog">&lt;/app-dialog-cancels>
+    &lt;app-dialog-rejects *ngIf="rejectsDialog">&lt;/app-dialog-rejects>
+    &lt;router-outlet>&lt;/router-outlet>
+  &lt;/div>
+&lt;/md-sidenav-container>
+</pre>
+<p><strong>Below: A simple service within nested router-outlet. Displays in a completely unstyled table.</strong></p>
 <table class="table table-hover">
   <thead>
   <tr>
