@@ -34,3 +34,71 @@
   <p> - Did you hear about this year's Fibonacci Conference? </p>
   <p> - It's going to be as big as the last two put together. </p>
 </div>
+<pre>
+<strong>TypeScript</strong>
+import &#123;Component, ViewChildren, QueryList} from '@angular/core';
+import &#123;
+  Portal,
+  ComponentPortal,
+  TemplatePortalDirective,
+} from '@angular/material';
+
+@Component(&#123;
+  selector: 'app-portal',
+  templateUrl: './portal.component.html',
+  styleUrls: ['./portal.component.scss']
+})
+export class PortalComponent &#123;
+
+  @ViewChildren(TemplatePortalDirective) templatePortals: QueryList&lt;Portal&lt;any>>;
+
+  selectedPortal: Portal&lt;any>;
+
+  get programmingJoke() &#123;
+    return this.templatePortals.first;
+  }
+
+  get mathJoke() &#123;
+    return this.templatePortals.last;
+  }
+
+  get scienceJoke() &#123;
+    return new ComponentPortal(ScienceJoke);
+  }
+}
+
+@Component(&#123;
+  selector: 'science-joke',
+  template: `&lt;p> 100 kilopascals go into a bar. &lt;/p>`
+})
+export class ScienceJoke &#123; }
+</pre>
+<br/>
+<pre>
+<strong>Markup</strong>
+&lt;div class="demo-portal-host">
+  &lt;ng-template [cdkPortalHost]="selectedPortal">&lt;/ng-template>
+&lt;/div>
+&lt;button md-raised-button color="accent" (click)="selectedPortal = programmingJoke">
+  Programming joke
+&lt;/button>
+&lt;button md-raised-button color="accent" (click)="selectedPortal = mathJoke">
+  Math joke
+&lt;/button>
+&lt;button md-raised-button color="accent" (click)="selectedPortal = scienceJoke">
+  Science joke
+&lt;/button>
+&lt;!-- Template vars on &lt;ng-template> elements can't be accessed _in_ the template because Angular
+      doesn't support grabbing the instance / TemplateRef this way because the variable may be
+      referring to something *in* the template (such as #item in ngFor). As such, the component
+      has to use @ViewChild / @ViewChildren to get these references.
+      See https://github.com/angular/angular/issues/7158 -->
+&lt;ng-template cdk-portal>
+  &lt;p> - Why don't jokes work in octal?&lt;/p>
+  &lt;p> - Because 7 10 11.&lt;/p>
+&lt;/ng-template>
+&lt;div *cdk-portal>
+  &lt;p> - Did you hear about this year's Fibonacci Conference? &lt;/p>
+  &lt;p> - It's going to be as big as the last two put together. &lt;/p>
+&lt;/div>
+</pre>

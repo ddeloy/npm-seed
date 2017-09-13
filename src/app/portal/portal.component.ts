@@ -5,7 +5,6 @@ import {
   TemplatePortalDirective,
 } from '@angular/material';
 
-
 @Component({
   selector: 'app-portal',
   templateUrl: './portal.component.html',
@@ -29,7 +28,6 @@ export class PortalComponent {
     return new ComponentPortal(ScienceJoke);
   }
 }
-
 
 @Component({
   selector: 'science-joke',
