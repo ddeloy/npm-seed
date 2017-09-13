@@ -25,12 +25,12 @@ export class PortalComponent {
   }
 
   get scienceJoke() {
-    return new ComponentPortal(ScienceJoke);
+    return new ComponentPortal(ScienceJokeComponent);
   }
 }
 
 @Component({
-  selector: 'science-joke',
+  selector: 'app-science-joke',
   template: `<p> 100 kilopascals go into a bar. </p>`
 })
-export class ScienceJoke { }
+export class ScienceJokeComponent { }
