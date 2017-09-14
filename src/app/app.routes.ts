@@ -10,7 +10,7 @@ import { CustomersModule } from './customers/customers.module';
 import { OrdersModule } from './orders/orders.module';
 import { CustomersComponent } from './customers/customers.component';
 import { OrdersComponent } from './orders/orders.component';
-import {PortalComponent} from "./portal/portal.component";
+import {PortalComponent} from './portal/portal.component';
 
 const APP_ROUTES = [
   {

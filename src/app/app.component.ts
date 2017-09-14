@@ -39,7 +39,7 @@ export class AppComponent {
         },
         {
           text: 'New',
-          icon: 'arrow_right',
+          rightIcon: 'arrow_right',
           items: [
             {
               text: 'Secondary',
@@ -47,11 +47,11 @@ export class AppComponent {
             },
             {
               text: 'New',
-              icon: 'arrow_right',
+              rightIcon: 'arrow_right',
               items: [
                 {
                   text: 'New',
-                  icon: 'arrow_right',
+                  rightIcon: 'arrow_right',
                   items: [
                     {
                       text: 'Document'
@@ -63,7 +63,7 @@ export class AppComponent {
                 },
                 {
                   text: 'Document',
-                  icon: 'arrow_right',
+                  rightIcon: 'arrow_right',
                   items: [
                     {
                       text: 'Document 1'
@@ -80,11 +80,11 @@ export class AppComponent {
             },
             {
               text: 'Presentation',
-              icon: 'arrow_right',
+              rightIcon: 'arrow_right',
               items: [
                 {
                   text: 'New',
-                  icon: 'arrow_right',
+                  rightIcon: 'arrow_right',
                   items: [
                     {
                       text: 'Document'
@@ -140,7 +140,7 @@ export class AppComponent {
             text: 'Save'
           }, {
             text: 'Save As',
-            icon: 'arrow_right',
+            rightIcon: 'arrow_right',
             items: [
               {
                 text: 'Print layout'
@@ -214,7 +214,7 @@ export class AppComponent {
         },
         {
           text: 'Mode',
-          icon: 'arrow_right',
+          rightIcon: 'arrow_right',
           items: [
             {
               text: 'Presentation'
