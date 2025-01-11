@@ -1,6 +1,6 @@
 # Library Seed
 
-#### 08/24/17: Updated to use @itradenetwork/itnlibrary and Licensed Wijmo
+#### 08/24/21: Updated to use Wijmo Grid
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.
 
